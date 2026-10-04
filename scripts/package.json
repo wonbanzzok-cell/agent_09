@@ -1,0 +1,11 @@
+{
+  "name": "agent09-report-scripts",
+  "private": true,
+  "description": "Builds the AI development report (.docx) from research notes.",
+  "scripts": {
+    "build": "node build-report.js ../report/AI_발전_보고서_v2.docx"
+  },
+  "dependencies": {
+    "docx": "^9.8.1"
+  }
+}

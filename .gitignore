@@ -1,0 +1,5 @@
+# Word lock files
+~$*
+
+# Node dependencies
+node_modules/

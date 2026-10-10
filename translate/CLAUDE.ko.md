@@ -44,24 +44,30 @@
 
 ## 프로젝트 구조
 
-이 저장소에는 클로드 코드가 만든 조사 노트와 보고서가 들어 있다.
+이 저장소에는 클로드 코드가 만든 조사 노트, 보고서, 발표자료가 들어 있다.
 
 ```
 agent_09/
-├── CLAUDE.md      # 프로젝트 규칙 (이 파일)
-├── research/      # 조사 노트 (.md, 영어)
-├── report/        # 완성된 보고서 (.docx, 한국어)
-├── scripts/       # 보고서를 만드는 스크립트 (Node.js)
-└── translate/     # 모든 .md 파일의 한국어 번역본
+├── CLAUDE.md        # 프로젝트 규칙 (이 파일)
+├── .claude/
+│   └── skills/
+│       └── mk-ppt/  # .pptx 파일을 만들고 고치는 프로젝트 전용 스킬
+├── research/        # 조사 노트 (.md, 영어)
+├── report/          # 완성된 보고서 (.docx, 한국어)
+├── presentation/    # 완성된 발표자료 (.pptx, 한국어)
+├── scripts/         # 보고서(Node.js)와 발표자료(Python)를 만드는 스크립트
+└── translate/       # 모든 .md 파일의 한국어 번역본
 ```
 
-- 조사 노트는 `research/`에, 보고서는 `report/`에 저장한다. 결과 파일을 저장소 루트에 두지 않는다.
-- 기존 조사 노트나 보고서를 덮어쓰지 않는다. 대신 새 버전을 만든다.
+- 조사 노트는 `research/`에, 보고서는 `report/`에, 발표자료는 `presentation/`에 저장한다. 결과 파일을 저장소 루트에 두지 않는다.
+- 기존 조사 노트, 보고서, 발표자료를 덮어쓰지 않는다. 대신 새 버전을 만든다.
 
 ## 파일 이름 규칙
 
 - 조사 노트: `research/<주제>-v<N>.md` (예: `research/ai-development-research-v2.md`)
 - 보고서: `report/<주제>_보고서_v<N>.docx` (예: `report/AI_발전_보고서_v2.docx`)
+- 발표자료: `presentation/<주제>_발표자료_v<N>.pptx` (예: `presentation/AI_발전_발표자료_v2.pptx`)
+- 발표자료 빌드 스크립트: `scripts/build-presentation-v<N>.py`
 - 버전 번호가 같은 조사 노트와 보고서는 짝이다. 보고서 `v<N>`은 조사 노트 `v<N>`을 바탕으로 한다.
 - 새 버전을 추가할 때는 기존 최고 번호의 다음 번호를 쓴다.
 
@@ -70,8 +76,19 @@ agent_09/
 | v1 | `research/ai-development-research-v1.md` | `report/AI_발전_보고서_v1.docx` |
 | v2 | `research/ai-development-research-v2.md` | `report/AI_발전_보고서_v2.docx` |
 
+| 버전 | 발표자료 | 빌드 스크립트 |
+|---|---|---|
+| v1 | `presentation/Anthropic_회사소개_발표자료_v1.pptx` | `scripts/build-presentation-v1.py` |
+
 ## 보고서 만들기
 
 - `scripts/build-report.js`는 `docx` npm 패키지로 v2 보고서를 만든다. 출력 경로 하나만 인자로 받는다.
 - v2 보고서를 다시 만들려면 `scripts/`에서 `npm install`을 한 번 실행한 뒤 `npm run build`를 실행한다.
 - 새 버전의 보고서를 만들 때는 스크립트를 복사해 내용과 출력 경로를 고치고, 결과를 `report/`에 새 버전 파일로 저장한다.
+
+## 발표자료 만들기
+
+- `.pptx` 파일을 다루는 작업에는 `.claude/skills/mk-ppt/`의 `mk-ppt` 스킬을 쓴다. 이 스킬은 이 저장소에서만 불러와진다.
+- 스킬에는 `python-pptx` 패키지가 필요하다: `python -m pip install python-pptx`.
+- 발표자료마다 출력 경로 하나만 인자로 받는 빌드 스크립트가 있다. 저장소 루트에서 실행한다: `python scripts/build-presentation-v<N>.py "presentation/<주제>_발표자료_v<N>.pptx"`.
+- 발표자료의 구조는 `python .claude/skills/mk-ppt/scripts/inspect_pptx.py <file.pptx>`로 확인한다.

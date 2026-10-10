@@ -44,24 +44,30 @@
 
 ## Project structure
 
-This repository holds research notes and reports produced by Claude Code.
+This repository holds research notes, reports, and presentations produced by Claude Code.
 
 ```
 agent_09/
-├── CLAUDE.md      # Project rules (this file)
-├── research/      # Research notes (.md, English)
-├── report/        # Finished reports (.docx, Korean)
-├── scripts/       # Scripts that build the reports (Node.js)
-└── translate/     # Korean translations of every .md file
+├── CLAUDE.md        # Project rules (this file)
+├── .claude/
+│   └── skills/
+│       └── mk-ppt/  # Project-only skill that builds and edits .pptx files
+├── research/        # Research notes (.md, English)
+├── report/          # Finished reports (.docx, Korean)
+├── presentation/    # Finished presentations (.pptx, Korean)
+├── scripts/         # Scripts that build the reports (Node.js) and presentations (Python)
+└── translate/       # Korean translations of every .md file
 ```
 
-- Save research notes to `research/` and reports to `report/`. Do not leave output files in the repository root.
-- Do not overwrite existing research notes or reports. Create a new version instead.
+- Save research notes to `research/`, reports to `report/`, and presentations to `presentation/`. Do not leave output files in the repository root.
+- Do not overwrite existing research notes, reports, or presentations. Create a new version instead.
 
 ## File naming
 
 - Research notes: `research/<topic>-v<N>.md` (for example, `research/ai-development-research-v2.md`)
 - Reports: `report/<주제>_보고서_v<N>.docx` (for example, `report/AI_발전_보고서_v2.docx`)
+- Presentations: `presentation/<주제>_발표자료_v<N>.pptx` (for example, `presentation/AI_발전_발표자료_v2.pptx`)
+- Presentation build scripts: `scripts/build-presentation-v<N>.py`
 - A research note and a report with the same version number belong together: the report `v<N>` is based on the research note `v<N>`.
 - To add a new version, use the next number after the highest existing one.
 
@@ -70,8 +76,19 @@ agent_09/
 | v1 | `research/ai-development-research-v1.md` | `report/AI_발전_보고서_v1.docx` |
 | v2 | `research/ai-development-research-v2.md` | `report/AI_발전_보고서_v2.docx` |
 
+| Version | Presentation | Build script |
+|---|---|---|
+| v1 | `presentation/Anthropic_회사소개_발표자료_v1.pptx` | `scripts/build-presentation-v1.py` |
+
 ## Building reports
 
 - `scripts/build-report.js` builds the v2 report with the `docx` npm package. It takes the output path as its only argument.
 - Rebuild the v2 report from `scripts/`: run `npm install` once, then `npm run build`.
 - For a new report version, copy the script, update its content and output path, and save the result as a new versioned file in `report/`.
+
+## Building presentations
+
+- Use the `mk-ppt` skill in `.claude/skills/mk-ppt/` for any work on `.pptx` files. It loads only in this repository.
+- The skill needs the `python-pptx` package: `python -m pip install python-pptx`.
+- Each deck has a build script that takes the output path as its only argument. Run it from the repository root: `python scripts/build-presentation-v<N>.py "presentation/<주제>_발표자료_v<N>.pptx"`.
+- Check a deck's structure with `python .claude/skills/mk-ppt/scripts/inspect_pptx.py <file.pptx>`.

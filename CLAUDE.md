@@ -50,8 +50,12 @@ This repository holds research notes, reports, and presentations produced by Cla
 agent_09/
 ├── CLAUDE.md        # Project rules (this file)
 ├── .claude/
+│   ├── rules/
+│   │   └── ppt-rule-v1/  # Rules for building presentations (ppt-rule-v1.md)
 │   └── skills/
 │       └── mk-ppt/  # Project-only skill that builds and edits .pptx files
+├── references/
+│   └── ppt/         # Design references for presentations (slide-design-system.md)
 ├── research/        # Research notes (.md, English)
 ├── report/          # Finished reports (.docx, Korean)
 ├── presentation/    # Finished presentations (.pptx, Korean)
@@ -79,6 +83,9 @@ agent_09/
 | Version | Presentation | Build script |
 |---|---|---|
 | v1 | `presentation/Anthropic_회사소개_발표자료_v1.pptx` | `scripts/build-presentation-v1.py` |
+| v2 | `presentation/AI_발전_발표자료_v2.pptx` | `scripts/build-presentation-v2.py` |
+
+- The presentation v2 is based on the research note v2.
 
 ## Building reports
 
@@ -88,7 +95,10 @@ agent_09/
 
 ## Building presentations
 
+- Apply the presentation rules in `.claude/rules/ppt-rule-v1/ppt-rule-v1.md` first (priority, slide count, design reference, layout). They load automatically.
+- When sources disagree, follow this order: the user's request, the presentation rules, the design reference, then the defaults of the `mk-ppt` skill.
 - Use the `mk-ppt` skill in `.claude/skills/mk-ppt/` for any work on `.pptx` files. It loads only in this repository.
+- The design reference for decks is `references/ppt/slide-design-system.md` (colors, fonts, layout, components).
 - The skill needs the `python-pptx` package: `python -m pip install python-pptx`.
 - Each deck has a build script that takes the output path as its only argument. Run it from the repository root: `python scripts/build-presentation-v<N>.py "presentation/<주제>_발표자료_v<N>.pptx"`.
 - Check a deck's structure with `python .claude/skills/mk-ppt/scripts/inspect_pptx.py <file.pptx>`.

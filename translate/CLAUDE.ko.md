@@ -50,8 +50,12 @@
 agent_09/
 ├── CLAUDE.md        # 프로젝트 규칙 (이 파일)
 ├── .claude/
+│   ├── rules/
+│   │   └── ppt-rule-v1/  # 발표자료 제작 규칙 (ppt-rule-v1.md)
 │   └── skills/
 │       └── mk-ppt/  # .pptx 파일을 만들고 고치는 프로젝트 전용 스킬
+├── references/
+│   └── ppt/         # 발표자료 디자인 참고 자료 (slide-design-system.md)
 ├── research/        # 조사 노트 (.md, 영어)
 ├── report/          # 완성된 보고서 (.docx, 한국어)
 ├── presentation/    # 완성된 발표자료 (.pptx, 한국어)
@@ -79,6 +83,9 @@ agent_09/
 | 버전 | 발표자료 | 빌드 스크립트 |
 |---|---|---|
 | v1 | `presentation/Anthropic_회사소개_발표자료_v1.pptx` | `scripts/build-presentation-v1.py` |
+| v2 | `presentation/AI_발전_발표자료_v2.pptx` | `scripts/build-presentation-v2.py` |
+
+- 발표자료 v2는 조사 노트 v2를 바탕으로 한다.
 
 ## 보고서 만들기
 
@@ -88,7 +95,10 @@ agent_09/
 
 ## 발표자료 만들기
 
+- `.claude/rules/ppt-rule-v1/ppt-rule-v1.md`의 발표자료 규칙(우선순위, 슬라이드 장수, 디자인 참고, 레이아웃)을 먼저 적용한다. 이 규칙은 자동으로 불러와진다.
+- 기준끼리 서로 다르면 사용자의 요청, 발표자료 규칙, 디자인 참고 자료, `mk-ppt` 스킬의 기본값 순서로 따른다.
 - `.pptx` 파일을 다루는 작업에는 `.claude/skills/mk-ppt/`의 `mk-ppt` 스킬을 쓴다. 이 스킬은 이 저장소에서만 불러와진다.
+- 발표자료의 디자인 참고 자료는 `references/ppt/slide-design-system.md`이다 (색상, 폰트, 레이아웃, 구성 요소).
 - 스킬에는 `python-pptx` 패키지가 필요하다: `python -m pip install python-pptx`.
 - 발표자료마다 출력 경로 하나만 인자로 받는 빌드 스크립트가 있다. 저장소 루트에서 실행한다: `python scripts/build-presentation-v<N>.py "presentation/<주제>_발표자료_v<N>.pptx"`.
 - 발표자료의 구조는 `python .claude/skills/mk-ppt/scripts/inspect_pptx.py <file.pptx>`로 확인한다.

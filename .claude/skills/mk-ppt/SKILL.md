@@ -11,6 +11,7 @@ The work is always the same shape: write a Python build script, run it, then ope
 
 ## Before starting
 
+- Apply the PPT rules in `.claude/rules/ppt-rule-v1/ppt-rule-v1.md` first. They take priority over this skill: where they or the design reference they point to disagree with this file, follow them.
 - Follow the workflow in `CLAUDE.md`: report a todo list, wait for approval, and finish by organizing the structure. Put the slide outline (step 3 below) in that todo list so the user approves the content before anything is built.
 - Check the library with `python -c "import pptx; print(pptx.__version__)"`. If the import fails, add `python -m pip install python-pptx` to the todo list instead of installing silently.
 
@@ -46,7 +47,7 @@ The work is always the same shape: write a Python build script, run it, then ope
 
 ## Design defaults
 
-Use these unless the user or a template says otherwise.
+Use these only for what the user, the PPT rules, the design reference, and a template leave open.
 
 - **Size:** 16:9, `13.333 x 7.5` inches. The built-in default template is 4:3, so set the size explicitly.
 - **Layout:** the blank layout (`slide_layouts[6]` in the default template) with text boxes placed by coordinates gives predictable results. Use placeholders when filling a user's template, so the template's design is kept.

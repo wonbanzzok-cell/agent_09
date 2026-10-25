@@ -44,13 +44,14 @@
 
 ## 프로젝트 구조
 
-이 저장소에는 클로드 코드가 만든 조사 노트, 보고서, 발표자료가 들어 있다.
+이 저장소에는 클로드 코드가 만든 조사 노트, 보고서, 발표자료, 카드뉴스 기획서가 들어 있다.
 
 ```
 agent_09/
 ├── CLAUDE.md        # 프로젝트 규칙 (이 파일)
 ├── .claude/
 │   ├── rules/
+│   │   ├── browser-rule-v1/  # Playwright MCP 브라우저 제어 규칙 (browser-rule-v1.md)
 │   │   └── ppt-rule-v1/  # 발표자료 제작 규칙 (ppt-rule-v1.md)
 │   └── skills/
 │       └── mk-ppt/  # .pptx 파일을 만들고 고치는 프로젝트 전용 스킬
@@ -59,12 +60,14 @@ agent_09/
 ├── research/        # 조사 노트 (.md, 영어)
 ├── report/          # 완성된 보고서 (.docx, 한국어)
 ├── presentation/    # 완성된 발표자료 (.pptx, 한국어)
+├── cardnews/        # 카드뉴스 기획서 (.md, 영어)
+│   └── images/      # 생성한 카드뉴스 이미지 (.png, 글자 없음)와 완성한 썸네일 디자인 (.png)
 ├── scripts/         # 보고서(Node.js)와 발표자료(Python)를 만드는 스크립트
 └── translate/       # 모든 .md 파일의 한국어 번역본
 ```
 
-- 조사 노트는 `research/`에, 보고서는 `report/`에, 발표자료는 `presentation/`에 저장한다. 결과 파일을 저장소 루트에 두지 않는다.
-- 기존 조사 노트, 보고서, 발표자료를 덮어쓰지 않는다. 대신 새 버전을 만든다.
+- 조사 노트는 `research/`에, 보고서는 `report/`에, 발표자료는 `presentation/`에, 카드뉴스 기획서는 `cardnews/`에 저장한다. 결과 파일을 저장소 루트에 두지 않는다.
+- 기존 조사 노트, 보고서, 발표자료, 카드뉴스 기획서를 덮어쓰지 않는다. 대신 새 버전을 만든다.
 
 ## 파일 이름 규칙
 
@@ -72,6 +75,9 @@ agent_09/
 - 보고서: `report/<주제>_보고서_v<N>.docx` (예: `report/AI_발전_보고서_v2.docx`)
 - 발표자료: `presentation/<주제>_발표자료_v<N>.pptx` (예: `presentation/AI_발전_발표자료_v2.pptx`)
 - 발표자료 빌드 스크립트: `scripts/build-presentation-v<N>.py`
+- 카드뉴스 기획서: `cardnews/<주제>-cardnews-v<N>.md` (예: `cardnews/camping-beginner-checklist-cardnews-v1.md`)
+- 카드뉴스 썸네일 이미지: `cardnews/images/<주제>-thumbnail-v<N>-<번호>.png` (예: `cardnews/images/camping-beginner-checklist-thumbnail-v1-1.png`). `v<N>`은 카드뉴스 기획서의 버전과 같다.
+- 피그마에서 내보낸 완성 썸네일 디자인: `cardnews/images/<주제>-thumbnail-design-v<N>-<시안>.png` (예: `cardnews/images/camping-beginner-checklist-thumbnail-design-v1-a.png`). `<시안>`은 피그마 프레임 이름의 알파벳을 소문자로 쓴다 (`Thumbnail A` → `a`).
 - 버전 번호가 같은 조사 노트와 보고서는 짝이다. 보고서 `v<N>`은 조사 노트 `v<N>`을 바탕으로 한다.
 - 새 버전을 추가할 때는 기존 최고 번호의 다음 번호를 쓴다.
 
@@ -86,6 +92,14 @@ agent_09/
 | v2 | `presentation/AI_발전_발표자료_v2.pptx` | `scripts/build-presentation-v2.py` |
 
 - 발표자료 v2는 조사 노트 v2를 바탕으로 한다.
+
+| 버전 | 카드뉴스 기획서 | 주제 | 썸네일 이미지 | 완성 썸네일 |
+|---|---|---|---|---|
+| v1 | `cardnews/camping-beginner-checklist-cardnews-v1.md` | 캠핑: 입문자 필수 준비물 체크리스트 | `cardnews/images/camping-beginner-checklist-thumbnail-v1-1.png`, `-v1-2.png` | `cardnews/images/camping-beginner-checklist-thumbnail-design-v1-a.png` (1080×1080) |
+
+- 카드뉴스 기획서는 8장으로 구성하고, 1장은 썸네일로 한다.
+- v1 썸네일 이미지는 컨셉 A(장비 플랫레이)로 힉스필드 MCP(`z_image` 모델, 1:1, 글자 없음)에서 생성했다.
+- v1 썸네일 디자인(1번 이미지로 만든 `Thumbnail A`, 2번 이미지로 만든 `Thumbnail B`, 1080×1080)은 피그마에 있고, 이 중 `Thumbnail A`만 PNG로 내보냈다: [캠핑 카드뉴스 - 입문자 체크리스트 v1](https://www.figma.com/design/N1sTvSQ4FIrzfmc0m2P7dj).
 
 ## 보고서 만들기
 
@@ -102,3 +116,8 @@ agent_09/
 - 스킬에는 `python-pptx` 패키지가 필요하다: `python -m pip install python-pptx`.
 - 발표자료마다 출력 경로 하나만 인자로 받는 빌드 스크립트가 있다. 저장소 루트에서 실행한다: `python scripts/build-presentation-v<N>.py "presentation/<주제>_발표자료_v<N>.pptx"`.
 - 발표자료의 구조는 `python .claude/skills/mk-ppt/scripts/inspect_pptx.py <file.pptx>`로 확인한다.
+
+## 브라우저 제어
+
+- 웹 브라우저를 쓸 수 있는 작업에는 `.claude/rules/browser-rule-v1/browser-rule-v1.md`의 브라우저 규칙을 적용한다. 이 규칙은 자동으로 불러와진다.
+- 사용자가 "브라우저를 열어서 작업", "웹 제어", "직접 작업" 같은 키워드로 브라우저 작업을 요청하면 바로 Playwright MCP를 쓴다. 그렇지 않으면 쓰기 전에 동의를 구한다.

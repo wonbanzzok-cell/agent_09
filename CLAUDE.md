@@ -44,13 +44,14 @@
 
 ## Project structure
 
-This repository holds research notes, reports, and presentations produced by Claude Code.
+This repository holds research notes, reports, presentations, and card news plans produced by Claude Code.
 
 ```
 agent_09/
 ├── CLAUDE.md        # Project rules (this file)
 ├── .claude/
 │   ├── rules/
+│   │   ├── browser-rule-v1/  # Rules for browser control with the Playwright MCP (browser-rule-v1.md)
 │   │   └── ppt-rule-v1/  # Rules for building presentations (ppt-rule-v1.md)
 │   └── skills/
 │       └── mk-ppt/  # Project-only skill that builds and edits .pptx files
@@ -59,12 +60,14 @@ agent_09/
 ├── research/        # Research notes (.md, English)
 ├── report/          # Finished reports (.docx, Korean)
 ├── presentation/    # Finished presentations (.pptx, Korean)
+├── cardnews/        # Card news plans (.md, English)
+│   └── images/      # Generated card news images (.png, no text) and finished thumbnail designs (.png)
 ├── scripts/         # Scripts that build the reports (Node.js) and presentations (Python)
 └── translate/       # Korean translations of every .md file
 ```
 
-- Save research notes to `research/`, reports to `report/`, and presentations to `presentation/`. Do not leave output files in the repository root.
-- Do not overwrite existing research notes, reports, or presentations. Create a new version instead.
+- Save research notes to `research/`, reports to `report/`, presentations to `presentation/`, and card news plans to `cardnews/`. Do not leave output files in the repository root.
+- Do not overwrite existing research notes, reports, presentations, or card news plans. Create a new version instead.
 
 ## File naming
 
@@ -72,6 +75,9 @@ agent_09/
 - Reports: `report/<주제>_보고서_v<N>.docx` (for example, `report/AI_발전_보고서_v2.docx`)
 - Presentations: `presentation/<주제>_발표자료_v<N>.pptx` (for example, `presentation/AI_발전_발표자료_v2.pptx`)
 - Presentation build scripts: `scripts/build-presentation-v<N>.py`
+- Card news plans: `cardnews/<topic>-cardnews-v<N>.md` (for example, `cardnews/camping-beginner-checklist-cardnews-v1.md`)
+- Card news thumbnail images: `cardnews/images/<topic>-thumbnail-v<N>-<number>.png` (for example, `cardnews/images/camping-beginner-checklist-thumbnail-v1-1.png`). `v<N>` matches the card news plan version.
+- Finished thumbnail designs exported from Figma: `cardnews/images/<topic>-thumbnail-design-v<N>-<variant>.png` (for example, `cardnews/images/camping-beginner-checklist-thumbnail-design-v1-a.png`). `<variant>` is the lowercase letter of the Figma frame (`Thumbnail A` → `a`).
 - A research note and a report with the same version number belong together: the report `v<N>` is based on the research note `v<N>`.
 - To add a new version, use the next number after the highest existing one.
 
@@ -86,6 +92,14 @@ agent_09/
 | v2 | `presentation/AI_발전_발표자료_v2.pptx` | `scripts/build-presentation-v2.py` |
 
 - The presentation v2 is based on the research note v2.
+
+| Version | Card news plan | Topic | Thumbnail images | Finished thumbnail |
+|---|---|---|---|---|
+| v1 | `cardnews/camping-beginner-checklist-cardnews-v1.md` | Camping: essential checklist for first-time campers | `cardnews/images/camping-beginner-checklist-thumbnail-v1-1.png`, `-v1-2.png` | `cardnews/images/camping-beginner-checklist-thumbnail-design-v1-a.png` (1080×1080) |
+
+- Each card news plan has 8 cards, and card 1 is the thumbnail.
+- The v1 thumbnail images were generated with the Higgsfield MCP (`z_image` model, 1:1, no text) from concept A (gear flat lay).
+- The v1 thumbnail designs (`Thumbnail A` with image 1 and `Thumbnail B` with image 2, 1080×1080) live in Figma, and only `Thumbnail A` has been exported as a PNG: [캠핑 카드뉴스 - 입문자 체크리스트 v1](https://www.figma.com/design/N1sTvSQ4FIrzfmc0m2P7dj).
 
 ## Building reports
 
@@ -102,3 +116,8 @@ agent_09/
 - The skill needs the `python-pptx` package: `python -m pip install python-pptx`.
 - Each deck has a build script that takes the output path as its only argument. Run it from the repository root: `python scripts/build-presentation-v<N>.py "presentation/<주제>_발표자료_v<N>.pptx"`.
 - Check a deck's structure with `python .claude/skills/mk-ppt/scripts/inspect_pptx.py <file.pptx>`.
+
+## Browser control
+
+- Apply the browser rules in `.claude/rules/browser-rule-v1/browser-rule-v1.md` for any task that could involve a web browser. They load automatically.
+- Use the Playwright MCP right away when the user asks for browser work with keywords such as "브라우저를 열어서 작업", "웹 제어", or "직접 작업". Otherwise, ask for consent before using it.

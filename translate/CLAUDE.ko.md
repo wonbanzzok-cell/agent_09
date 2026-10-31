@@ -111,7 +111,7 @@ agent_09_latest/
 | v1 | `output/blog/csat-2027-checklist-blog-v1.md` | 2027학년도 수능(2026-11-19): 수험생·학부모 당일 체크리스트 | `research/csat-2027-checklist-research-v1.md` |
 
 - 블로그 초안 v1은 조사 노트 `research/csat-2027-checklist-research-v1.md`를 바탕으로 한다.
-- 블로그 초안 v1은 네이버 블로그 `prope00`에 임시저장했고 발행하지 않았다. 태그는 발행 설정 창에서만 넣을 수 있어 입력하지 않았다.
+- 블로그 초안 v1은 사용자의 네이버 블로그에 임시저장했고 발행하지 않았다. 태그는 발행 설정 창에서만 넣을 수 있어 입력하지 않았다.
 
 ## 보고서 만들기
 

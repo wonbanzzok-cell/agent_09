@@ -111,7 +111,7 @@ agent_09_latest/
 | v1 | `output/blog/csat-2027-checklist-blog-v1.md` | 2027 CSAT (수능, 2026-11-19): exam-day checklist for test takers and parents | `research/csat-2027-checklist-research-v1.md` |
 
 - The blog draft v1 is based on the research note `research/csat-2027-checklist-research-v1.md`.
-- The blog draft v1 was saved as a temporary draft (임시저장) on the Naver blog `prope00` and has not been published. Tags were not entered because they can only be set in the publish dialog.
+- The blog draft v1 was saved as a temporary draft (임시저장) on the user's Naver blog and has not been published. Tags were not entered because they can only be set in the publish dialog.
 
 ## Building reports
 

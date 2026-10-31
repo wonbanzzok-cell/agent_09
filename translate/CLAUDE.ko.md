@@ -41,15 +41,17 @@
   - **삭제:** 번역본을 삭제하고, 그 결과 `translate/` 안에 빈 폴더가 남으면 함께 지운다.
 - `translate/` 안의 파일은 번역본일 뿐이다. 이 파일들의 번역본은 만들지 않는다.
 - 이 규칙은 `CLAUDE.md` 자신에도 적용된다.
+- **예외:** `output/blog/`의 블로그 원고는 한국어로 쓰며 `translate/`에 번역본을 두지 않는다.
 
 ## 프로젝트 구조
 
-이 저장소에는 클로드 코드가 만든 조사 노트, 보고서, 발표자료, 카드뉴스 기획서가 들어 있다.
+이 저장소에는 클로드 코드가 만든 조사 노트, 보고서, 발표자료, 카드뉴스 기획서, 블로그 원고가 들어 있다.
 
 ```
-agent_09/
+agent_09_latest/
 ├── CLAUDE.md        # 프로젝트 규칙 (이 파일)
 ├── .claude/
+│   ├── agents/      # 프로젝트 서브 에이전트 (research-agent.md, blog-agent.md)
 │   ├── rules/
 │   │   ├── browser-rule-v1/  # Playwright MCP 브라우저 제어 규칙 (browser-rule-v1.md)
 │   │   └── ppt-rule-v1/  # 발표자료 제작 규칙 (ppt-rule-v1.md)
@@ -62,12 +64,14 @@ agent_09/
 ├── presentation/    # 완성된 발표자료 (.pptx, 한국어)
 ├── cardnews/        # 카드뉴스 기획서 (.md, 영어)
 │   └── images/      # 생성한 카드뉴스 이미지 (.png, 글자 없음)와 완성한 썸네일 디자인 (.png)
+├── output/
+│   └── blog/        # 네이버 블로그 원고 (.md, 한국어)
 ├── scripts/         # 보고서(Node.js)와 발표자료(Python)를 만드는 스크립트
 └── translate/       # 모든 .md 파일의 한국어 번역본
 ```
 
-- 조사 노트는 `research/`에, 보고서는 `report/`에, 발표자료는 `presentation/`에, 카드뉴스 기획서는 `cardnews/`에 저장한다. 결과 파일을 저장소 루트에 두지 않는다.
-- 기존 조사 노트, 보고서, 발표자료, 카드뉴스 기획서를 덮어쓰지 않는다. 대신 새 버전을 만든다.
+- 조사 노트는 `research/`에, 보고서는 `report/`에, 발표자료는 `presentation/`에, 카드뉴스 기획서는 `cardnews/`에, 블로그 원고는 `output/blog/`에 저장한다. 결과 파일을 저장소 루트에 두지 않는다.
+- 기존 조사 노트, 보고서, 발표자료, 카드뉴스 기획서, 블로그 원고를 덮어쓰지 않는다. 대신 새 버전을 만든다.
 
 ## 파일 이름 규칙
 
@@ -75,6 +79,7 @@ agent_09/
 - 보고서: `report/<주제>_보고서_v<N>.docx` (예: `report/AI_발전_보고서_v2.docx`)
 - 발표자료: `presentation/<주제>_발표자료_v<N>.pptx` (예: `presentation/AI_발전_발표자료_v2.pptx`)
 - 발표자료 빌드 스크립트: `scripts/build-presentation-v<N>.py`
+- 블로그 원고: `output/blog/<주제>-blog-v<N>.md` (예: `output/blog/camping-beginner-checklist-blog-v1.md`)
 - 카드뉴스 기획서: `cardnews/<주제>-cardnews-v<N>.md` (예: `cardnews/camping-beginner-checklist-cardnews-v1.md`)
 - 카드뉴스 썸네일 이미지: `cardnews/images/<주제>-thumbnail-v<N>-<번호>.png` (예: `cardnews/images/camping-beginner-checklist-thumbnail-v1-1.png`). `v<N>`은 카드뉴스 기획서의 버전과 같다.
 - 피그마에서 내보낸 완성 썸네일 디자인: `cardnews/images/<주제>-thumbnail-design-v<N>-<시안>.png` (예: `cardnews/images/camping-beginner-checklist-thumbnail-design-v1-a.png`). `<시안>`은 피그마 프레임 이름의 알파벳을 소문자로 쓴다 (`Thumbnail A` → `a`).
@@ -101,6 +106,13 @@ agent_09/
 - v1 썸네일 이미지는 컨셉 A(장비 플랫레이)로 힉스필드 MCP(`z_image` 모델, 1:1, 글자 없음)에서 생성했다.
 - v1 썸네일 디자인(1번 이미지로 만든 `Thumbnail A`, 2번 이미지로 만든 `Thumbnail B`, 1080×1080)은 피그마에 있고, 이 중 `Thumbnail A`만 PNG로 내보냈다: [캠핑 카드뉴스 - 입문자 체크리스트 v1](https://www.figma.com/design/N1sTvSQ4FIrzfmc0m2P7dj).
 
+| 버전 | 블로그 초안 | 주제 | 조사 노트 |
+|---|---|---|---|
+| v1 | `output/blog/csat-2027-checklist-blog-v1.md` | 2027학년도 수능(2026-11-19): 수험생·학부모 당일 체크리스트 | `research/csat-2027-checklist-research-v1.md` |
+
+- 블로그 초안 v1은 조사 노트 `research/csat-2027-checklist-research-v1.md`를 바탕으로 한다.
+- 블로그 초안 v1은 네이버 블로그 `prope00`에 임시저장했고 발행하지 않았다. 태그는 발행 설정 창에서만 넣을 수 있어 입력하지 않았다.
+
 ## 보고서 만들기
 
 - `scripts/build-report.js`는 `docx` npm 패키지로 v2 보고서를 만든다. 출력 경로 하나만 인자로 받는다.
@@ -116,6 +128,20 @@ agent_09/
 - 스킬에는 `python-pptx` 패키지가 필요하다: `python -m pip install python-pptx`.
 - 발표자료마다 출력 경로 하나만 인자로 받는 빌드 스크립트가 있다. 저장소 루트에서 실행한다: `python scripts/build-presentation-v<N>.py "presentation/<주제>_발표자료_v<N>.pptx"`.
 - 발표자료의 구조는 `python .claude/skills/mk-ppt/scripts/inspect_pptx.py <file.pptx>`로 확인한다.
+
+## 서브 에이전트
+
+프로젝트 서브 에이전트는 `.claude/agents/`에 있다. 에이전트를 추가하거나 고친 뒤에는 클로드 코드를 다시 시작하거나 `/agents`를 연다.
+
+| 에이전트 | 파일 | 역할 | 결과물 |
+|---|---|---|---|
+| `research-agent` | `.claude/agents/research-agent.md` | 주제를 웹에서 조사한다 | `research/<주제>-v<N>.md` (영어)와 `translate/research/<주제>-v<N>.ko.md` |
+| `blog-agent` | `.claude/agents/blog-agent.md` | 네이버 블로그 글을 쓰고 Playwright MCP로 임시저장한다 | `output/blog/<주제>-blog-v<N>.md` (한국어)와 네이버 블로그 임시저장 글 |
+
+- `blog-agent`는 실행할 때마다 사용자에게 네이버 블로그 ID를 확인받고, 무엇이든 입력하기 전에 로그인된 계정이 그 ID와 같은지 확인한다.
+- `blog-agent`는 절대 발행하지 않고 로그인 정보도 입력하지 않는다. 로그인은 사용자가 브라우저 창에서 직접 한다.
+- 네이버 블로그 임시저장 글에는 공개 URL이 없다. 에이전트는 저장 목록에서 이어 쓸 수 있는 에디터 링크(`https://blog.naver.com/<ID>?Redirect=Write`)를 보고한다.
+- 조사 노트(예: `research/<주제>-v<N>.md`)를 `blog-agent`의 자료로 넘길 수 있다.
 
 ## 브라우저 제어
 

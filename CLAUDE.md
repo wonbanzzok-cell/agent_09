@@ -41,15 +41,17 @@
   - **Deleted:** delete the translation, and remove any empty folders left behind in `translate/`.
 - Files inside `translate/` are translations only. Do not create translations of them.
 - This rule applies to `CLAUDE.md` itself.
+- **Exception:** blog drafts in `output/blog/` are written in Korean and have no translation in `translate/`.
 
 ## Project structure
 
-This repository holds research notes, reports, presentations, and card news plans produced by Claude Code.
+This repository holds research notes, reports, presentations, card news plans, and blog drafts produced by Claude Code.
 
 ```
-agent_09/
+agent_09_latest/
 ├── CLAUDE.md        # Project rules (this file)
 ├── .claude/
+│   ├── agents/      # Project sub agents (research-agent.md, blog-agent.md)
 │   ├── rules/
 │   │   ├── browser-rule-v1/  # Rules for browser control with the Playwright MCP (browser-rule-v1.md)
 │   │   └── ppt-rule-v1/  # Rules for building presentations (ppt-rule-v1.md)
@@ -62,12 +64,14 @@ agent_09/
 ├── presentation/    # Finished presentations (.pptx, Korean)
 ├── cardnews/        # Card news plans (.md, English)
 │   └── images/      # Generated card news images (.png, no text) and finished thumbnail designs (.png)
+├── output/
+│   └── blog/        # Naver blog drafts (.md, Korean)
 ├── scripts/         # Scripts that build the reports (Node.js) and presentations (Python)
 └── translate/       # Korean translations of every .md file
 ```
 
-- Save research notes to `research/`, reports to `report/`, presentations to `presentation/`, and card news plans to `cardnews/`. Do not leave output files in the repository root.
-- Do not overwrite existing research notes, reports, presentations, or card news plans. Create a new version instead.
+- Save research notes to `research/`, reports to `report/`, presentations to `presentation/`, card news plans to `cardnews/`, and blog drafts to `output/blog/`. Do not leave output files in the repository root.
+- Do not overwrite existing research notes, reports, presentations, card news plans, or blog drafts. Create a new version instead.
 
 ## File naming
 
@@ -75,6 +79,7 @@ agent_09/
 - Reports: `report/<주제>_보고서_v<N>.docx` (for example, `report/AI_발전_보고서_v2.docx`)
 - Presentations: `presentation/<주제>_발표자료_v<N>.pptx` (for example, `presentation/AI_발전_발표자료_v2.pptx`)
 - Presentation build scripts: `scripts/build-presentation-v<N>.py`
+- Blog drafts: `output/blog/<topic>-blog-v<N>.md` (for example, `output/blog/camping-beginner-checklist-blog-v1.md`)
 - Card news plans: `cardnews/<topic>-cardnews-v<N>.md` (for example, `cardnews/camping-beginner-checklist-cardnews-v1.md`)
 - Card news thumbnail images: `cardnews/images/<topic>-thumbnail-v<N>-<number>.png` (for example, `cardnews/images/camping-beginner-checklist-thumbnail-v1-1.png`). `v<N>` matches the card news plan version.
 - Finished thumbnail designs exported from Figma: `cardnews/images/<topic>-thumbnail-design-v<N>-<variant>.png` (for example, `cardnews/images/camping-beginner-checklist-thumbnail-design-v1-a.png`). `<variant>` is the lowercase letter of the Figma frame (`Thumbnail A` → `a`).
@@ -101,6 +106,13 @@ agent_09/
 - The v1 thumbnail images were generated with the Higgsfield MCP (`z_image` model, 1:1, no text) from concept A (gear flat lay).
 - The v1 thumbnail designs (`Thumbnail A` with image 1 and `Thumbnail B` with image 2, 1080×1080) live in Figma, and only `Thumbnail A` has been exported as a PNG: [캠핑 카드뉴스 - 입문자 체크리스트 v1](https://www.figma.com/design/N1sTvSQ4FIrzfmc0m2P7dj).
 
+| Version | Blog draft | Topic | Research note |
+|---|---|---|---|
+| v1 | `output/blog/csat-2027-checklist-blog-v1.md` | 2027 CSAT (수능, 2026-11-19): exam-day checklist for test takers and parents | `research/csat-2027-checklist-research-v1.md` |
+
+- The blog draft v1 is based on the research note `research/csat-2027-checklist-research-v1.md`.
+- The blog draft v1 was saved as a temporary draft (임시저장) on the Naver blog `prope00` and has not been published. Tags were not entered because they can only be set in the publish dialog.
+
 ## Building reports
 
 - `scripts/build-report.js` builds the v2 report with the `docx` npm package. It takes the output path as its only argument.
@@ -116,6 +128,20 @@ agent_09/
 - The skill needs the `python-pptx` package: `python -m pip install python-pptx`.
 - Each deck has a build script that takes the output path as its only argument. Run it from the repository root: `python scripts/build-presentation-v<N>.py "presentation/<주제>_발표자료_v<N>.pptx"`.
 - Check a deck's structure with `python .claude/skills/mk-ppt/scripts/inspect_pptx.py <file.pptx>`.
+
+## Sub agents
+
+Project sub agents live in `.claude/agents/`. Restart Claude Code or open `/agents` after adding or changing one.
+
+| Agent | File | Role | Output |
+|---|---|---|---|
+| `research-agent` | `.claude/agents/research-agent.md` | Researches a topic on the web | `research/<topic>-v<N>.md` (English) and `translate/research/<topic>-v<N>.ko.md` |
+| `blog-agent` | `.claude/agents/blog-agent.md` | Writes a Naver blog post and saves it as a temporary draft with the Playwright MCP | `output/blog/<topic>-blog-v<N>.md` (Korean) and a temporary draft on Naver blog |
+
+- `blog-agent` confirms the Naver blog ID with the user on every run and checks that the logged-in account matches it before typing anything.
+- `blog-agent` never publishes and never enters login credentials. The user logs in in the browser window.
+- Temporary drafts on Naver blog have no public URL. The agent reports the editor link (`https://blog.naver.com/<ID>?Redirect=Write`), where the draft can be resumed from the 저장 list.
+- A research note can be handed to `blog-agent` as its material, for example `research/<topic>-v<N>.md`.
 
 ## Browser control
 

@@ -20,7 +20,7 @@ Apply these rules whenever you build or edit a presentation (.pptx).
 ## Design reference
 
 - Before building, read the design-related `.md` file the user provides and follow it.
-- If the user has not provided one, ask for it before starting.
+- If the user has not provided one, use `references/ppt/slide-design-system.md`.
 
 ## Layout and readability
 

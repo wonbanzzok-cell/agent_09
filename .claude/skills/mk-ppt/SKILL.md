@@ -24,7 +24,6 @@ The work is always the same shape: write a Python build script, run it, then ope
 | Images made for a deck | `presentation/assets/v<N>/` |
 | Throwaway files | the session scratchpad, never the repository |
 
-- Create `presentation/` when the first deck is built.
 - Do not overwrite an existing deck. Use the next number after the highest existing version, and copy the previous build script to the new version number before changing it.
 - A deck built from a research note or report takes the same version number as its source when that number is free.
 - Write slide content in Korean unless the user asks otherwise, matching the reports in `report/`.

@@ -19,14 +19,15 @@ The work is always the same shape: write a Python build script, run it, then ope
 
 | Item | Location |
 |---|---|
-| Presentation | `presentation/<주제>_발표자료_v<N>.pptx` |
+| Presentation | `output/presentation/<topic>/<주제>_발표자료_v<N>.pptx` |
 | Build script | `scripts/build-presentation-v<N>.py` |
-| Images made for a deck | `presentation/assets/v<N>/` |
+| Images made for a deck | `output/presentation/<topic>/images/` |
 | Throwaway files | the session scratchpad, never the repository |
 
+- `<topic>` is a short lowercase English slug for the deck topic (for example, `ai-development`). Reuse the folder if the topic already has one; otherwise create it. Never save a deck directly under `output/presentation/` or in the old `presentation/` folder.
 - Do not overwrite an existing deck. Use the next number after the highest existing version, and copy the previous build script to the new version number before changing it.
 - A deck built from a research note or report takes the same version number as its source when that number is free.
-- Write slide content in Korean unless the user asks otherwise, matching the reports in `report/`.
+- Write slide content in Korean unless the user asks otherwise, matching the reports in `output/report/<topic>/`.
 
 ## Workflow
 
@@ -39,7 +40,7 @@ The work is always the same shape: write a Python build script, run it, then ope
 4. **Write the build script.** It takes the output path as its only argument, like `scripts/build-report.js`. Start from the skeleton in `references/python-pptx-api.md`.
 5. **Run it from the repository root.**
    ```
-   python scripts/build-presentation-v<N>.py "presentation/<주제>_발표자료_v<N>.pptx"
+   python scripts/build-presentation-v<N>.py "output/presentation/<topic>/<주제>_발표자료_v<N>.pptx"
    ```
 6. **Verify.** Run the inspector on the output and compare it with the outline: slide count, titles, no empty placeholders, no shape outside the slide. Fix the script and rebuild rather than patching the file by hand.
 7. **Report and organize.** Tell the user what was built and what could not be done, then update the structure and tables in `CLAUDE.md` and its translation.

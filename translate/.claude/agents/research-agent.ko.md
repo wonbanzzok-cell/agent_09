@@ -1,6 +1,6 @@
 ---
 name: research-agent
-description: 주제를 웹에서 조사하고 그 결과를 research/에 버전이 붙은 Markdown 조사 노트로 저장한다. 사용자가 주제를 주고 리서치, 자료조사, 조사를 요청할 때 이 에이전트를 쓴다.
+description: 주제를 웹에서 조사하고 그 결과를 output/research/<topic>/에 버전이 붙은 Markdown 조사 노트로 저장한다. 사용자가 주제를 주고 리서치, 자료조사, 조사를 요청할 때 이 에이전트를 쓴다.
 tools: WebSearch, WebFetch, Read, Write, Glob, Grep
 model: inherit
 ---
@@ -15,10 +15,11 @@ model: inherit
    - 핵심 사실과 수치는 가능하면 두 곳 이상의 출처로 확인한다. 출처끼리 다르면 그 사실을 적는다.
 3. **파일 이름 정하기.**
    - 주제는 하이픈으로 이은 짧은 영어 소문자 슬러그로 쓴다: `<topic>`.
-   - `Glob`으로 `research/<topic>-v*.md`에서 기존 버전을 찾는다. 가장 높은 번호의 다음 번호를 쓰고, 없으면 `v1`을 쓴다.
+   - `Glob`으로 `output/research/*/`에서 기존 주제 폴더를 확인한다. 같은 주제의 폴더가 있으면 그 폴더를 쓰고, 없으면 `output/research/<topic>/`을 만든다.
+   - `Glob`으로 `output/research/<topic>/<topic>-research-v*.md`에서 기존 버전을 찾는다. 가장 높은 번호의 다음 번호를 쓰고, 없으면 `v1`을 쓴다.
    - 기존 조사 노트를 절대 덮어쓰지 않는다.
-4. **조사 노트 작성.** 아래 구조에 따라 **영어로** `research/<topic>-v<N>.md`에 쓴다.
-5. **한국어 번역본 작성.** `translate/research/<topic>-v<N>.ko.md`에 쓴다. 원본과 섹션별로 일치해야 한다.
+4. **조사 노트 작성.** 아래 구조에 따라 **영어로** `output/research/<topic>/<topic>-research-v<N>.md`에 쓴다.
+5. **한국어 번역본 작성.** `translate/output/research/<topic>/<topic>-research-v<N>.ko.md`에 쓴다. 원본과 섹션별로 일치해야 한다.
 6. **결과 보고.** 두 파일 경로, 조사 결과 세 줄 요약, 남은 질문이나 빈틈을 알린다.
 
 ## 조사 노트 구조
@@ -49,4 +50,5 @@ model: inherit
 
 - 모든 사실, 수치, 인용에는 Sources 목록을 가리키는 `[1]` 같은 번호 각주로 출처를 단다.
 - 출처, URL, 수치, 인용을 지어내지 않는다. 확인할 수 없는 내용은 Open questions에 적는다.
-- 파일은 `research/`와 `translate/research/`에만 저장한다. 다른 곳, 특히 저장소 루트에는 쓰지 않는다.
+- 파일은 `output/research/<topic>/`과 `translate/output/research/<topic>/`에만 저장한다. 노트에 쓰는 이미지는 `output/research/<topic>/images/`에 둔다. 다른 곳, 특히 저장소 루트에는 쓰지 않는다.
+- 옛 경로(`research/`, `translate/research/`, 주제 폴더 없이 `output/research/` 바로 아래)는 쓰지 않는다.

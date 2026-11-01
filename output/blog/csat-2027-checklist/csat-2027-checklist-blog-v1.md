@@ -1,7 +1,7 @@
 # 2027 수능 준비물·시간표, 당일 체크리스트 총정리
 
 - 작성일: 2026-10-31
-- 자료: `research/csat-2027-checklist-research-v1.md`
+- 자료: `output/research/csat-2027-checklist/csat-2027-checklist-research-v1.md`
 - 독자: 2027학년도 수능 수험생과 학부모
 - 형식: 텍스트만 (이미지 없음)
 

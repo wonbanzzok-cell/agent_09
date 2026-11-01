@@ -2,7 +2,7 @@
 
 Research date: 2026-10-04
 
-These notes collect publicly available sources on the state of artificial intelligence (AI) development as of October 2026. They are the basis for the report `report/AI_발전_보고서_v2.docx`. Some figures come from secondary summaries rather than the primary reports, so treat individual numbers as indicative. Where sources disagree, both figures are given.
+These notes collect publicly available sources on the state of artificial intelligence (AI) development as of October 2026. They are the basis for the report `output/report/ai-development/AI_발전_보고서_v2.docx`. Some figures come from secondary summaries rather than the primary reports, so treat individual numbers as indicative. Where sources disagree, both figures are given.
 
 ## 1. Capabilities and frontier models
 

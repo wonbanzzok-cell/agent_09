@@ -19,14 +19,15 @@ description: 이 저장소에서 python-pptx 라이브러리로 PowerPoint(.pptx
 
 | 항목 | 위치 |
 |---|---|
-| 발표자료 | `presentation/<주제>_발표자료_v<N>.pptx` |
+| 발표자료 | `output/presentation/<topic>/<주제>_발표자료_v<N>.pptx` |
 | 빌드 스크립트 | `scripts/build-presentation-v<N>.py` |
-| 발표자료용으로 만든 이미지 | `presentation/assets/v<N>/` |
+| 발표자료용으로 만든 이미지 | `output/presentation/<topic>/images/` |
 | 임시 파일 | 세션 스크래치패드. 저장소에는 두지 않는다 |
 
+- `<topic>`은 발표 주제를 나타내는 짧은 영어 소문자 슬러그다 (예: `ai-development`). 그 주제의 폴더가 이미 있으면 그 폴더를 쓰고, 없으면 만든다. `output/presentation/` 바로 아래나 옛 `presentation/` 폴더에는 저장하지 않는다.
 - 기존 발표자료를 덮어쓰지 않는다. 기존 최고 버전의 다음 번호를 쓰고, 이전 빌드 스크립트를 새 버전 번호로 복사한 뒤 고친다.
 - 조사 노트나 보고서를 바탕으로 만든 발표자료는, 그 번호가 비어 있으면 원본과 같은 버전 번호를 쓴다.
-- 사용자가 따로 요청하지 않으면 슬라이드 내용은 `report/`의 보고서와 같이 한국어로 쓴다.
+- 사용자가 따로 요청하지 않으면 슬라이드 내용은 `output/report/<topic>/`의 보고서와 같이 한국어로 쓴다.
 
 ## 작업 순서
 
@@ -39,7 +40,7 @@ description: 이 저장소에서 python-pptx 라이브러리로 PowerPoint(.pptx
 4. **빌드 스크립트를 작성한다.** `scripts/build-report.js`처럼 출력 경로 하나만 인자로 받는다. `references/python-pptx-api.md`의 기본 틀에서 시작한다.
 5. **저장소 루트에서 실행한다.**
    ```
-   python scripts/build-presentation-v<N>.py "presentation/<주제>_발표자료_v<N>.pptx"
+   python scripts/build-presentation-v<N>.py "output/presentation/<topic>/<주제>_발표자료_v<N>.pptx"
    ```
 6. **검증한다.** 결과 파일에 검사 스크립트를 실행해 개요와 비교한다. 슬라이드 수, 제목, 빈 플레이스홀더가 없는지, 슬라이드 밖으로 나간 도형이 없는지 본다. 파일을 손으로 고치지 말고 스크립트를 고쳐 다시 만든다.
 7. **보고하고 정리한다.** 무엇을 만들었고 무엇을 하지 못했는지 사용자에게 알린 뒤, `CLAUDE.md`와 번역본의 구조도와 표를 고친다.

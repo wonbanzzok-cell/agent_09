@@ -33,7 +33,7 @@
 - Write every `.md` file in this repository in **English**.
 - For each `.md` file, keep a Korean translation under `translate/`, mirroring the original's relative path and adding `.ko` before the extension.
   - `CLAUDE.md` → `translate/CLAUDE.ko.md`
-  - `docs/guide.md` → `translate/docs/guide.ko.md`
+  - `output/research/ai-development/ai-development-research-v2.md` → `translate/output/research/ai-development/ai-development-research-v2.ko.md`
 - Keep translations in sync in the same task as the change to the original:
   - **Created:** create the translation.
   - **Modified:** update the translation to reflect the change.
@@ -41,66 +41,95 @@
   - **Deleted:** delete the translation, and remove any empty folders left behind in `translate/`.
 - Files inside `translate/` are translations only. Do not create translations of them.
 - This rule applies to `CLAUDE.md` itself.
-- **Exception:** blog drafts in `output/blog/` are written in Korean and have no translation in `translate/`.
+- **Exception:** blog drafts in `output/blog/<topic>/` are written in Korean and have no translation in `translate/`.
 
 ## Project structure
 
-This repository holds research notes, reports, presentations, card news plans, and blog drafts produced by Claude Code.
+This repository holds research notes, reports, presentations, card news plans, blog drafts, and web pages produced by Claude Code. Every output goes under `output/<type>/<topic>/`. Design references go under `references/<type>/`.
 
 ```
 agent_09_latest/
 ├── CLAUDE.md        # Project rules (this file)
 ├── .claude/
-│   ├── agents/      # Project sub agents (research-agent.md, blog-agent.md)
+│   ├── agents/      # Project sub agents (research-agent.md, blog-agent.md, web-designer.md, developer.md)
 │   ├── rules/
 │   │   ├── browser-rule-v1/  # Rules for browser control with the Playwright MCP (browser-rule-v1.md)
-│   │   └── ppt-rule-v1/  # Rules for building presentations (ppt-rule-v1.md)
+│   │   ├── ppt-rule-v1/  # Rules for building presentations (ppt-rule-v1.md)
+│   │   └── web-dev-rule-v1/  # Rules for writing and deploying web pages (web-dev-rule-v1.md)
 │   └── skills/
 │       └── mk-ppt/  # Project-only skill that builds and edits .pptx files
 ├── references/
-│   └── ppt/         # Design references for presentations (slide-design-system.md)
-├── research/        # Research notes (.md, English)
-├── report/          # Finished reports (.docx, Korean)
-├── presentation/    # Finished presentations (.pptx, Korean)
-├── cardnews/        # Card news plans (.md, English)
-│   └── images/      # Generated card news images (.png, no text) and finished thumbnail designs (.png)
+│   ├── ppt/         # Design references for presentations (slide-design-system.md)
+│   └── web/         # Web design references by topic (<topic>/<topic>-web-reference-v<N>.md, English, and <topic>/images/ screenshots)
+│       └── legodt/
 ├── output/
-│   └── blog/        # Naver blog drafts (.md, Korean)
+│   ├── research/    # Research notes (.md, English)
+│   │   ├── ai-development/
+│   │   ├── csat-2027-checklist/
+│   │   └── legodt/
+│   ├── report/      # Finished reports (.docx, Korean)
+│   │   └── ai-development/
+│   ├── presentation/  # Finished presentations (.pptx, Korean)
+│   │   ├── ai-development/
+│   │   └── anthropic-company/
+│   ├── cardnews/    # Card news plans (.md, English)
+│   │   └── camping-beginner-checklist/
+│   │       └── images/  # Generated card news images (.png, no text) and finished thumbnail designs (.png)
+│   ├── blog/        # Naver blog drafts (.md, Korean)
+│   │   └── csat-2027-checklist/
+│   └── web/         # Web page code by topic and version (<topic>/v<N>/: index.html, css/, js/, images/, libs/)
+│       └── legodt/
 ├── scripts/         # Scripts that build the reports (Node.js) and presentations (Python)
-└── translate/       # Korean translations of every .md file
+└── translate/       # Korean translations of every .md file (mirrors the paths above, e.g. translate/output/research/<topic>/)
 ```
 
-- Save research notes to `research/`, reports to `report/`, presentations to `presentation/`, card news plans to `cardnews/`, and blog drafts to `output/blog/`. Do not leave output files in the repository root.
+### Topic folders
+
+- When work of the same type covers a different topic, create a folder named after the topic (the work name) inside that type's folder, and keep everything for that topic there.
+  - Examples: `output/blog/winter/` holds `winter-blog-v1.md` and `images/`; `output/research/csat-2027-checklist/` holds `csat-2027-checklist-research-v1.md` and `images/`.
+- This applies to every kind of work: research notes, reports, presentations, card news plans, blog drafts, and any new type of document.
+- `<topic>` is a short lowercase English slug with hyphens (for example, `ai-development`). Before creating a folder, check the existing topic folders and reuse one if the topic is the same.
+- Put images and other supporting files for a topic in `<topic>/images/`.
+- Version numbers (`v<N>`) count within the topic folder.
+- For a new type of work, create `output/<type>/<topic>/` and add it to the structure above.
+- Do not save to the old paths: `research/`, `report/`, `presentation/`, or `cardnews/` in the repository root, or directly under `output/<type>/` without a topic folder.
+
+### Saving outputs
+
+- Do not leave output files in the repository root.
 - Do not overwrite existing research notes, reports, presentations, card news plans, or blog drafts. Create a new version instead.
 
 ## File naming
 
-- Research notes: `research/<topic>-v<N>.md` (for example, `research/ai-development-research-v2.md`)
-- Reports: `report/<주제>_보고서_v<N>.docx` (for example, `report/AI_발전_보고서_v2.docx`)
-- Presentations: `presentation/<주제>_발표자료_v<N>.pptx` (for example, `presentation/AI_발전_발표자료_v2.pptx`)
-- Presentation build scripts: `scripts/build-presentation-v<N>.py`
-- Blog drafts: `output/blog/<topic>-blog-v<N>.md` (for example, `output/blog/camping-beginner-checklist-blog-v1.md`)
-- Card news plans: `cardnews/<topic>-cardnews-v<N>.md` (for example, `cardnews/camping-beginner-checklist-cardnews-v1.md`)
-- Card news thumbnail images: `cardnews/images/<topic>-thumbnail-v<N>-<number>.png` (for example, `cardnews/images/camping-beginner-checklist-thumbnail-v1-1.png`). `v<N>` matches the card news plan version.
-- Finished thumbnail designs exported from Figma: `cardnews/images/<topic>-thumbnail-design-v<N>-<variant>.png` (for example, `cardnews/images/camping-beginner-checklist-thumbnail-design-v1-a.png`). `<variant>` is the lowercase letter of the Figma frame (`Thumbnail A` → `a`).
-- A research note and a report with the same version number belong together: the report `v<N>` is based on the research note `v<N>`.
-- To add a new version, use the next number after the highest existing one.
+- Research notes: `output/research/<topic>/<topic>-research-v<N>.md` (for example, `output/research/ai-development/ai-development-research-v2.md`)
+- Reports: `output/report/<topic>/<주제>_보고서_v<N>.docx` (for example, `output/report/ai-development/AI_발전_보고서_v2.docx`)
+- Presentations: `output/presentation/<topic>/<주제>_발표자료_v<N>.pptx` (for example, `output/presentation/ai-development/AI_발전_발표자료_v2.pptx`)
+- Presentation build scripts: `scripts/build-presentation-<topic>-v<N>.py` for new decks. The existing scripts `scripts/build-presentation-v1.py` and `-v2.py` keep their names.
+- Blog drafts: `output/blog/<topic>/<topic>-blog-v<N>.md` (for example, `output/blog/csat-2027-checklist/csat-2027-checklist-blog-v1.md`)
+- Web design references: `references/web/<topic>/<topic>-web-reference-v<N>.md`, with screenshots in `references/web/<topic>/images/<topic>-reference-v<N>-<number>.png`
+- Web pages: `output/web/<topic>/v<N>/` with `index.html` as the entry point and screenshots in `screenshots/`
+- Card news plans: `output/cardnews/<topic>/<topic>-cardnews-v<N>.md` (for example, `output/cardnews/camping-beginner-checklist/camping-beginner-checklist-cardnews-v1.md`)
+- Card news thumbnail images: `output/cardnews/<topic>/images/<topic>-thumbnail-v<N>-<number>.png` (for example, `output/cardnews/camping-beginner-checklist/images/camping-beginner-checklist-thumbnail-v1-1.png`). `v<N>` matches the card news plan version.
+- Finished thumbnail designs exported from Figma: `output/cardnews/<topic>/images/<topic>-thumbnail-design-v<N>-<variant>.png` (for example, `output/cardnews/camping-beginner-checklist/images/camping-beginner-checklist-thumbnail-design-v1-a.png`). `<variant>` is the lowercase letter of the Figma frame (`Thumbnail A` → `a`).
+- A research note and a report with the same topic and version number belong together: the report `v<N>` is based on the research note `v<N>`.
+- To add a new version, use the next number after the highest existing one in the same topic folder.
 
 | Version | Research note | Report |
 |---|---|---|
-| v1 | `research/ai-development-research-v1.md` | `report/AI_발전_보고서_v1.docx` |
-| v2 | `research/ai-development-research-v2.md` | `report/AI_발전_보고서_v2.docx` |
+| v1 | `output/research/ai-development/ai-development-research-v1.md` | `output/report/ai-development/AI_발전_보고서_v1.docx` |
+| v2 | `output/research/ai-development/ai-development-research-v2.md` | `output/report/ai-development/AI_발전_보고서_v2.docx` |
 
 | Version | Presentation | Build script |
 |---|---|---|
-| v1 | `presentation/Anthropic_회사소개_발표자료_v1.pptx` | `scripts/build-presentation-v1.py` |
-| v2 | `presentation/AI_발전_발표자료_v2.pptx` | `scripts/build-presentation-v2.py` |
+| v1 | `output/presentation/anthropic-company/Anthropic_회사소개_발표자료_v1.pptx` | `scripts/build-presentation-v1.py` |
+| v2 | `output/presentation/ai-development/AI_발전_발표자료_v2.pptx` | `scripts/build-presentation-v2.py` |
 
-- The presentation v2 is based on the research note v2.
+- The presentation v2 is based on the research note `output/research/ai-development/ai-development-research-v2.md`.
+- The report and deck files built before the move still show the old source path (`research/...`) in their text. The build scripts now use the new paths.
 
 | Version | Card news plan | Topic | Thumbnail images | Finished thumbnail |
 |---|---|---|---|---|
-| v1 | `cardnews/camping-beginner-checklist-cardnews-v1.md` | Camping: essential checklist for first-time campers | `cardnews/images/camping-beginner-checklist-thumbnail-v1-1.png`, `-v1-2.png` | `cardnews/images/camping-beginner-checklist-thumbnail-design-v1-a.png` (1080×1080) |
+| v1 | `output/cardnews/camping-beginner-checklist/camping-beginner-checklist-cardnews-v1.md` | Camping: essential checklist for first-time campers | `output/cardnews/camping-beginner-checklist/images/camping-beginner-checklist-thumbnail-v1-1.png`, `-v1-2.png` | `output/cardnews/camping-beginner-checklist/images/camping-beginner-checklist-thumbnail-design-v1-a.png` (1080×1080) |
 
 - Each card news plan has 8 cards, and card 1 is the thumbnail.
 - The v1 thumbnail images were generated with the Higgsfield MCP (`z_image` model, 1:1, no text) from concept A (gear flat lay).
@@ -108,16 +137,16 @@ agent_09_latest/
 
 | Version | Blog draft | Topic | Research note |
 |---|---|---|---|
-| v1 | `output/blog/csat-2027-checklist-blog-v1.md` | 2027 CSAT (수능, 2026-11-19): exam-day checklist for test takers and parents | `research/csat-2027-checklist-research-v1.md` |
+| v1 | `output/blog/csat-2027-checklist/csat-2027-checklist-blog-v1.md` | 2027 CSAT (수능, 2026-11-19): exam-day checklist for test takers and parents | `output/research/csat-2027-checklist/csat-2027-checklist-research-v1.md` |
 
-- The blog draft v1 is based on the research note `research/csat-2027-checklist-research-v1.md`.
+- The blog draft v1 is based on the research note `output/research/csat-2027-checklist/csat-2027-checklist-research-v1.md`.
 - The blog draft v1 was saved as a temporary draft (임시저장) on the user's Naver blog and has not been published. Tags were not entered because they can only be set in the publish dialog.
 
 ## Building reports
 
 - `scripts/build-report.js` builds the v2 report with the `docx` npm package. It takes the output path as its only argument.
-- Rebuild the v2 report from `scripts/`: run `npm install` once, then `npm run build`.
-- For a new report version, copy the script, update its content and output path, and save the result as a new versioned file in `report/`.
+- Rebuild the v2 report from `scripts/`: run `npm install` once, then `npm run build`. It writes to `output/report/ai-development/AI_발전_보고서_v2.docx`.
+- For a new report version, copy the script, update its content and output path, and save the result as a new versioned file in `output/report/<topic>/`.
 
 ## Building presentations
 
@@ -126,7 +155,7 @@ agent_09_latest/
 - Use the `mk-ppt` skill in `.claude/skills/mk-ppt/` for any work on `.pptx` files. It loads only in this repository.
 - The design reference for decks is `references/ppt/slide-design-system.md` (colors, fonts, layout, components).
 - The skill needs the `python-pptx` package: `python -m pip install python-pptx`.
-- Each deck has a build script that takes the output path as its only argument. Run it from the repository root: `python scripts/build-presentation-v<N>.py "presentation/<주제>_발표자료_v<N>.pptx"`.
+- Each deck has a build script that takes the output path as its only argument. Run it from the repository root: `python scripts/build-presentation-<topic>-v<N>.py "output/presentation/<topic>/<주제>_발표자료_v<N>.pptx"`.
 - Check a deck's structure with `python .claude/skills/mk-ppt/scripts/inspect_pptx.py <file.pptx>`.
 
 ## Sub agents
@@ -135,13 +164,36 @@ Project sub agents live in `.claude/agents/`. Restart Claude Code or open `/agen
 
 | Agent | File | Role | Output |
 |---|---|---|---|
-| `research-agent` | `.claude/agents/research-agent.md` | Researches a topic on the web | `research/<topic>-v<N>.md` (English) and `translate/research/<topic>-v<N>.ko.md` |
-| `blog-agent` | `.claude/agents/blog-agent.md` | Writes a Naver blog post and saves it as a temporary draft with the Playwright MCP | `output/blog/<topic>-blog-v<N>.md` (Korean) and a temporary draft on Naver blog |
+| `research-agent` | `.claude/agents/research-agent.md` | Researches a topic on the web | `output/research/<topic>/<topic>-research-v<N>.md` (English) and `translate/output/research/<topic>/<topic>-research-v<N>.ko.md` |
+| `blog-agent` | `.claude/agents/blog-agent.md` | Writes a Naver blog post and saves it as a temporary draft with the Playwright MCP | `output/blog/<topic>/<topic>-blog-v<N>.md` (Korean) and a temporary draft on Naver blog |
+| `web-designer` | `.claude/agents/web-designer.md` | Finds web design references on GDWEB and DBCUT and analyzes their design and layout | `references/web/<topic>/<topic>-web-reference-v<N>.md` (English), `references/web/<topic>/images/`, and `translate/references/web/<topic>/<topic>-web-reference-v<N>.ko.md` |
+| `developer` | `.claude/agents/developer.md` | Writes web page code from the references and analysis, following `.claude/rules/web-dev-rule-v1/web-dev-rule-v1.md`, and deploys it to GitHub Pages | `output/web/<topic>/v<N>/` and a GitHub Pages site |
 
 - `blog-agent` confirms the Naver blog ID with the user on every run and checks that the logged-in account matches it before typing anything.
 - `blog-agent` never publishes and never enters login credentials. The user logs in in the browser window.
 - Temporary drafts on Naver blog have no public URL. The agent reports the editor link (`https://blog.naver.com/<ID>?Redirect=Write`), where the draft can be resumed from the 저장 list.
-- A research note can be handed to `blog-agent` as its material, for example `research/<topic>-v<N>.md`.
+- A research note can be handed to `blog-agent` as its material, for example `output/research/<topic>/<topic>-research-v<N>.md`.
+- `web-designer` searches for references only on GDWEB and DBCUT and never uses Pinterest. It saves screenshots and links, and analyzes design and layout.
+- `developer` reads `.claude/rules/web-dev-rule-v1/web-dev-rule-v1.md` before coding, builds in plain HTML, CSS, and JavaScript, and deploys to GitHub Pages without asking.
+- Web work flows as: research note → `web-designer` (references) → `developer` (page).
+
+## Building web pages
+
+- Apply the web development rules in `.claude/rules/web-dev-rule-v1/web-dev-rule-v1.md` (file structure, coding, libraries, deployment). They load automatically.
+- Pages use plain HTML, CSS, and JavaScript: `index.html`, `css/style.css`, `js/main.js`, `images/`, and `libs/` for downloaded libraries.
+- Libraries are downloaded at an exact version and saved in `libs/<library>-<version>/` with their license. Every installed library is reported to the user.
+- Each task is deployed to GitHub Pages right away, without asking, in a public repository named after the task (`<topic>`) under the logged-in `gh` account. The repository description ends with `[agent_09 web]`. A new version of the same task updates the same repository and is tagged `v<N>`.
+- The deployed URL is `https://<owner>.github.io/<task_name>/`. Record each deployment in the table below.
+
+| Task | Version | Page folder | Repository | Deployed link |
+|---|---|---|---|---|
+| `legodt` | v1 | `output/web/legodt/v1/` | [wonbanzzok-cell/legodt](https://github.com/wonbanzzok-cell/legodt) | [https://wonbanzzok-cell.github.io/legodt/](https://wonbanzzok-cell.github.io/legodt/) |
+
+| Task | Version | Research note | Web reference |
+|---|---|---|---|
+| `legodt` | v1 | `output/research/legodt/legodt-research-v1.md` | `references/web/legodt/legodt-web-reference-v1.md` |
+
+- The `legodt` page (LEGODT, the tumbler brand by Odense) is an unofficial introduction page. Its photos are from Unsplash (Unsplash License), its tumbler, charm, and sticker graphics are hand-drawn SVG, and its Korean font is Pretendard 1.3.9 in `libs/`. No JavaScript library is used.
 
 ## Browser control
 

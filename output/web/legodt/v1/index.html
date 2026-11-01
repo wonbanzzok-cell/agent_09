@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LEGODT 레고트 | Dress Up Your Tumbler — 텀꾸 브랜드 소개</title>
+  <meta name="description" content="오덴세가 만든 컨템포러리 라이프스타일 브랜드 레고트(LEGODT). 루프 텀블러와 텀꾸(텀블러 꾸미기) 액세서리, 컬래버레이션, 한국·일본 팝업과 구매처를 한 페이지에 정리했습니다.">
+  <meta name="theme-color" content="#FFFBF5">
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&display=swap">
+  <link rel="stylesheet" href="libs/pretendard-1.3.9/pretendardvariable-dynamic-subset.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">본문으로 바로가기</a>
+
+  <!-- Reusable SVG symbols (drawn for this page) -->
+  <svg class="sprite" aria-hidden="true" focusable="false">
+    <symbol id="tumbler" viewBox="0 0 200 320">
+      <path d="M72 74V44a28 28 0 0 1 56 0v30" fill="none" stroke="#1E1B2E" stroke-width="21" stroke-linecap="round"/>
+      <path d="M72 74V44a28 28 0 0 1 56 0v30" fill="none" stroke="var(--lid, #F7C6D9)" stroke-width="15" stroke-linecap="round"/>
+      <path d="M47 100h106l-8 188q-1 16-17 16H72q-16 0-17-16Z" fill="var(--body, #FFFFFF)" stroke="#1E1B2E" stroke-width="3"/>
+      <path d="M50.5 186h99l-3.4 72H53.9Z" fill="var(--sleeve, #BFDDF7)" stroke="#1E1B2E" stroke-width="3"/>
+      <rect x="40" y="66" width="120" height="34" rx="13" fill="var(--lid, #F7C6D9)" stroke="#1E1B2E" stroke-width="3"/>
+      <rect x="64" y="114" width="10" height="160" rx="5" fill="#fff" opacity=".45"/>
+    </symbol>
+    <symbol id="sparkle" viewBox="0 0 40 40">
+      <path d="M20 0c2 11 9 18 20 20-11 2-18 9-20 20-2-11-9-18-20-20C11 18 18 11 20 0Z"/>
+    </symbol>
+    <symbol id="burst" viewBox="0 0 100 100">
+      <path d="M50 2l8 14 15-7 2 16 16 2-7 15 14 8-14 8 7 15-16 2-2 16-15-7-8 14-8-14-15 7-2-16-16-2 7-15L2 50l14-8-7-15 16-2 2-16 15 7Z"/>
+    </symbol>
+  </svg>
+
+  <header class="site-header" id="top">
+    <nav class="pill-nav" aria-label="주요 메뉴">
+      <a class="pill-nav__logo" href="#top" aria-label="LEGODT 맨 위로">LEGODT</a>
+      <button class="pill-nav__toggle" type="button" aria-expanded="false" aria-controls="nav-menu">
+        <span class="visually-hidden">메뉴 열기</span>
+        <span class="pill-nav__bars" aria-hidden="true"></span>
+      </button>
+      <ul class="pill-nav__menu" id="nav-menu">
+        <li><a href="#story">브랜드</a></li>
+        <li><a href="#features">기능</a></li>
+        <li><a href="#tumggu">텀꾸 가이드</a></li>
+        <li><a href="#lineup">라인업</a></li>
+        <li><a href="#collab">컬래버</a></li>
+        <li><a href="#popup">팝업</a></li>
+        <li><a href="#buy">구매처</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- 1. Hero -->
+    <section class="hero" aria-labelledby="hero-title">
+      <p class="hero__wordmark" aria-hidden="true">LEGODT</p>
+      <div class="hero__grid container">
+        <div class="hero__visual">
+          <div class="badge-spin" aria-hidden="true">
+            <svg viewBox="0 0 200 200">
+              <defs><path id="badge-circle" d="M100 100m-74 0a74 74 0 1 1 148 0a74 74 0 1 1-148 0"/></defs>
+              <circle cx="100" cy="100" r="96" fill="#FFE14D"/>
+              <text><textPath href="#badge-circle">TUMGGU · TUMBLER + DECORATE · 텀꾸 · </textPath></text>
+              <path class="badge-spin__heart" d="M100 128c-22-14-34-26-34-41 0-10 8-17 17-17 7 0 13 4 17 10 4-6 10-10 17-10 9 0 17 7 17 17 0 15-12 27-34 41Z"/>
+            </svg>
+          </div>
+          <svg class="hero-tumbler" viewBox="0 0 320 400" role="img" aria-labelledby="hero-tumbler-title">
+            <title id="hero-tumbler-title">키링과 참, 스티커로 꾸민 루프 텀블러 일러스트</title>
+            <ellipse cx="160" cy="388" rx="96" ry="10" fill="#1E1B2E" opacity=".08"/>
+            <g transform="translate(60 72)">
+              <use href="#tumbler" class="hero-tumbler__base" width="200" height="320"/>
+            </g>
+            <!-- strap -->
+            <path class="pop pop--1" d="M108 300c-26 8-40 30-36 58" fill="none" stroke="#FF8A1F" stroke-width="7" stroke-linecap="round" stroke-dasharray="2 12"/>
+            <!-- stickers -->
+            <g class="pop pop--2"><circle cx="150" cy="210" r="18" fill="#FF4F8B"/><path d="M150 220c-9-6-14-10-14-16 0-4 3-7 7-7 3 0 5 2 7 4 2-2 4-4 7-4 4 0 7 3 7 7 0 6-5 10-14 16Z" fill="#fff"/></g>
+            <g class="pop pop--3"><use href="#sparkle" x="168" y="226" width="30" height="30" fill="#2F5BEA"/></g>
+            <g class="pop pop--4"><rect x="118" y="240" width="46" height="20" rx="10" fill="#FFE14D"/><text x="141" y="254" text-anchor="middle" class="hero-tumbler__tag">POP!</text></g>
+            <!-- bunny keyring swinging from handle -->
+            <g class="swing swing--a">
+              <line x1="146" y1="96" x2="146" y2="132" stroke="#5B5670" stroke-width="3"/>
+              <circle cx="146" cy="94" r="6" fill="none" stroke="#5B5670" stroke-width="3"/>
+              <ellipse cx="136" cy="134" rx="6" ry="15" fill="#FFFBF5" stroke="#1E1B2E" stroke-width="3"/>
+              <ellipse cx="156" cy="134" rx="6" ry="15" fill="#FFFBF5" stroke="#1E1B2E" stroke-width="3"/>
+              <circle cx="146" cy="158" r="20" fill="#FFFBF5" stroke="#1E1B2E" stroke-width="3"/>
+              <circle cx="139" cy="156" r="2.5" fill="#1E1B2E"/><circle cx="153" cy="156" r="2.5" fill="#1E1B2E"/>
+              <circle cx="134" cy="164" r="3.5" fill="#F7C6D9"/><circle cx="158" cy="164" r="3.5" fill="#F7C6D9"/>
+            </g>
+            <!-- heart charm -->
+            <g class="swing swing--b">
+              <line x1="176" y1="96" x2="186" y2="138" stroke="#5B5670" stroke-width="3"/>
+              <path d="M190 172c-16-10-24-18-24-28 0-7 5-12 12-12 5 0 9 3 12 7 3-4 7-7 12-7 7 0 12 5 12 12 0 10-8 18-24 28Z" fill="#FF4F8B" stroke="#1E1B2E" stroke-width="3"/>
+            </g>
+            <use class="twinkle" href="#sparkle" x="40" y="96" width="26" height="26" fill="#FF8A1F"/>
+            <use class="twinkle twinkle--late" href="#sparkle" x="256" y="230" width="20" height="20" fill="#FF4F8B"/>
+          </svg>
+        </div>
+        <div class="hero__copy">
+          <p class="eyebrow">Contemporary lifestyle brand by ODENSE</p>
+          <h1 id="hero-title" class="hero__title">Dress Up<br>Your <em>Tumbler</em></h1>
+          <p class="hero__sub">Make it pop. Make it <em>you.</em></p>
+          <p class="hero__lead">레고트(LEGODT)는 텀블러를 고르고, 조합하고, 완성하는 즐거움을 파는 브랜드예요. 루프 손잡이 텀블러에 키링·참·스티커·스트랩을 더하는 <strong>텀꾸(텀블러 꾸미기)</strong>로 나만의 텀블러를 만들어 보세요.</p>
+          <div class="hero__ctas">
+            <a class="btn btn--ink" href="#tumggu">텀꾸 시작하기</a>
+            <a class="btn btn--light" href="#lineup">라인업 보기</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Marquee -->
+    <div class="marquee" aria-label="레고트 태그라인">
+      <div class="marquee__track">
+        <ul class="marquee__list">
+          <li>Dress Up Your Tumbler</li><li>Make it pop. Make it you.</li><li>What's Your Tumbler?</li><li>Stay in the Loop</li><li>PLAY MY WAY</li><li>What's your pick today?</li>
+        </ul>
+        <ul class="marquee__list" aria-hidden="true">
+          <li>Dress Up Your Tumbler</li><li>Make it pop. Make it you.</li><li>What's Your Tumbler?</li><li>Stay in the Loop</li><li>PLAY MY WAY</li><li>What's your pick today?</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 3. Brand story -->
+    <section class="section band band--milk" id="story" aria-labelledby="story-title">
+      <div class="container story">
+        <div class="story__text reveal">
+          <p class="label">Brand Story</p>
+          <h2 id="story-title" class="h2">식탁 위 컬러에서<br>손 안의 컬러로</h2>
+          <p>레고트는 도자기·테이블웨어 브랜드 <strong>오덴세(ODENSE)</strong>가 새롭게 개발한 컨템포러리 라이프스타일 브랜드입니다. 오덴세는 CJ ENM의 브랜드 전문 자회사 <strong>브랜드웍스코리아</strong>가 운영해요.</p>
+          <p>시작은 독특한 컬러의 모듈형 테이블웨어 라인이었어요. 2023년부터는 루프 텀블러를 중심으로 한 라이프스타일 브랜드로 자랐고, 지금은 텀블러를 "취향과 개성을 표현하는 새로운 라이프스타일 아이템"으로 제안합니다.</p>
+          <ol class="story__steps">
+            <li><span class="story__year">2022</span><span>컬러풀한 모듈형 테이블웨어 라인 판매 (고블렛 350ml 등)</span></li>
+            <li><span class="story__year">2023</span><span>루프 텀블러 출시(9월) · 29CM 쇼케이스 · 투웨이 루프 텀블러(12월)</span></li>
+            <li><span class="story__year">2025</span><span>공식몰 3D 컨피규레이터 오픈(7월) · 일본 첫 팝업</span></li>
+            <li><span class="story__year">2026</span><span>28개 파츠로 조립하는 모듈형 텀블러 출시(6월)</span></li>
+          </ol>
+          <ul class="chips" aria-label="브랜드 키워드">
+            <li class="chip chip--pink">Choose 고르고</li>
+            <li class="chip chip--mint">Combine 조합하고</li>
+            <li class="chip chip--blue">Complete 완성하기</li>
+          </ul>
+        </div>
+        <div class="story__collage reveal">
+          <figure class="photo photo--arch">
+            <img src="images/story-ceramic-cups.jpg" width="900" height="1303" loading="lazy" alt="나무 받침 위에 놓인 알록달록한 추상 무늬 도자기 컵들">
+          </figure>
+          <figure class="photo photo--round">
+            <img src="images/story-pastel-cups.jpg" width="1200" height="799" loading="lazy" alt="흰 선반 위에 나란히 놓인 파스텔 그러데이션 컵과 받침 접시">
+          </figure>
+          <p class="sticker sticker--quote" aria-hidden="true">Witty &amp; Colorful</p>
+          <svg class="story__spark" aria-hidden="true"><use href="#sparkle"/></svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Features -->
+    <section class="section band band--blue" id="features" aria-labelledby="features-title">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="label">Why LEGODT</p>
+          <h2 id="features-title" class="h2">예쁜데 성능까지, <em>숫자</em>로 보는 레고트</h2>
+        </header>
+        <ul class="bento">
+          <li class="bento__card bento__card--pink reveal">
+            <p class="bento__num">6<small>h</small></p>
+            <h3 class="h3">보온·보냉 6시간</h3>
+            <p>보온병에 견줄 만한 단열로 따뜻한 음료도, 시원한 음료도 6시간 동안 지켜 줘요.</p>
+          </li>
+          <li class="bento__card bento__card--butter reveal">
+            <p class="bento__num">304</p>
+            <h3 class="h3">스테인리스 304</h3>
+            <p>바디는 스테인리스 304. 투웨이 루프 텀블러는 세라믹 코팅으로 금속 냄새를 줄였어요.</p>
+          </li>
+          <li class="bento__card bento__card--mint reveal">
+            <p class="bento__num">400<small>ml</small>–1<small>L</small></p>
+            <h3 class="h3">하루에 맞춘 용량</h3>
+            <p>가볍게 드는 400ml부터 넉넉한 1000ml까지, 출근·운동·여행에 맞게 골라요.</p>
+          </li>
+          <li class="bento__card bento__card--lavender reveal">
+            <p class="bento__num">28</p>
+            <h3 class="h3">모듈형 파츠</h3>
+            <p>손잡이·뚜껑·바디·슬리브를 28개 파츠에서 골라 직접 조립하는 모듈형 텀블러(2026).</p>
+          </li>
+          <li class="bento__card bento__card--green reveal">
+            <p class="bento__num">180<small>+</small></p>
+            <h3 class="h3">180가지 이상의 디자인</h3>
+            <p>키링·스티커·스트랩 조합만으로 180가지가 넘는 텀블러 디자인을 만들 수 있어요(2024 기준).</p>
+          </li>
+          <li class="bento__card bento__card--gray reveal">
+            <p class="bento__num bento__num--icon" aria-hidden="true">
+              <svg viewBox="0 0 64 64"><path d="M20 30V18a12 12 0 0 1 24 0v12" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round"/><rect x="10" y="28" width="44" height="14" rx="6" fill="currentColor"/></svg>
+            </p>
+            <h3 class="h3">새지 않는 뚜껑 + 루프 핸들</h3>
+            <p>흘림을 막는 구조의 뚜껑과 손에 착 감기는 인체공학 루프 손잡이가 시그니처예요.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 5. How to TUMGGU -->
+    <section class="section band band--butter" id="tumggu" aria-labelledby="tumggu-title">
+      <div class="container tumggu">
+        <div class="tumggu__aside">
+          <header class="section-head section-head--left">
+            <p class="label">How to TUMGGU</p>
+            <h2 id="tumggu-title" class="h2">텀꾸, <em>5단계</em>면 끝</h2>
+            <p class="section-head__desc">텀꾸(TUMGGU)는 '텀블러'와 '꾸미다'를 합친 말이에요. 단계마다 텀블러가 한 겹씩 완성돼요.</p>
+          </header>
+          <div class="builder" data-step="5">
+            <svg class="builder__svg" viewBox="0 0 260 360" role="img" aria-labelledby="builder-title">
+              <title id="builder-title">단계별로 꾸며지는 텀블러 일러스트</title>
+              <ellipse cx="130" cy="346" rx="80" ry="8" fill="#1E1B2E" opacity=".08"/>
+              <g class="builder__layer" data-layer="1">
+                <path d="M102 80V54a28 28 0 0 1 56 0v26" fill="none" stroke="#BFEBDA" stroke-width="15" stroke-linecap="round"/>
+                <rect x="70" y="72" width="120" height="34" rx="13" fill="#BFEBDA"/>
+                <path d="M77 106h106l-8 188q-1 16-17 16h-56q-16 0-17-16Z" fill="#fff" stroke="#E9E7EC" stroke-width="2"/>
+                <rect x="94" y="120" width="10" height="160" rx="5" fill="#E9E7EC"/>
+              </g>
+              <g class="builder__layer" data-layer="2">
+                <path d="M81 192h98l-3 72H84Z" fill="#D9CCF5"/>
+                <path d="M83 204h94M82 252h96" stroke="#fff" stroke-width="3" stroke-dasharray="6 6"/>
+              </g>
+              <g class="builder__layer" data-layer="3">
+                <line x1="170" y1="100" x2="186" y2="140" stroke="#5B5670" stroke-width="3"/>
+                <path d="M190 178c-16-10-24-18-24-28 0-7 5-12 12-12 5 0 9 3 12 7 3-4 7-7 12-7 7 0 12 5 12 12 0 10-8 18-24 28Z" fill="#FF4F8B" stroke="#1E1B2E" stroke-width="3"/>
+                <line x1="92" y1="100" x2="76" y2="136" stroke="#5B5670" stroke-width="3"/>
+                <circle cx="72" cy="150" r="16" fill="#FFE14D" stroke="#1E1B2E" stroke-width="3"/>
+                <use href="#sparkle" x="62" y="140" width="20" height="20" fill="#1E1B2E"/>
+              </g>
+              <g class="builder__layer" data-layer="4">
+                <circle cx="114" cy="150" r="14" fill="#2F5BEA"/>
+                <use href="#sparkle" x="105" y="141" width="18" height="18" fill="#fff"/>
+                <rect x="128" y="160" width="40" height="18" rx="9" fill="#FF8A1F"/>
+                <path d="M176 270c22 10 30 36 22 66" fill="none" stroke="#FF8A1F" stroke-width="7" stroke-linecap="round"/>
+              </g>
+              <g class="builder__layer" data-layer="5">
+                <path d="M40 200a90 30 0 0 0 180 0" fill="none" stroke="#1E1B2E" stroke-width="3" stroke-dasharray="8 7"/>
+                <path d="M214 192l8 9-11 4" fill="none" stroke="#1E1B2E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                <rect x="186" y="28" width="58" height="30" rx="15" fill="#1E1B2E"/>
+                <text x="215" y="48" text-anchor="middle" class="builder__tag">360°</text>
+              </g>
+            </svg>
+          </div>
+        </div>
+        <ol class="steps">
+          <li class="step reveal" data-step="1">
+            <span class="step__num">01</span>
+            <div>
+              <h3 class="h3">텀블러 고르기</h3>
+              <p>루프 텀블러 라인에서 바디와 용량, 컬러를 먼저 골라요. 400ml부터 1000ml까지 있어요.</p>
+            </div>
+          </li>
+          <li class="step reveal" data-step="2">
+            <span class="step__num">02</span>
+            <div>
+              <h3 class="h3">슬리브·파츠 바꾸기</h3>
+              <p>슬리브 컬러를 바꿔 끼워요. 모듈형 텀블러라면 손잡이·뚜껑·바디까지 28개 파츠에서 골라요.</p>
+            </div>
+          </li>
+          <li class="step reveal" data-step="3">
+            <span class="step__num">03</span>
+            <div>
+              <h3 class="h3">참·키링 달기</h3>
+              <p>버니 키링, 아크릴 리본 참 같은 텀꾸 키링과 참을 루프 손잡이에 달아요.</p>
+            </div>
+          </li>
+          <li class="step reveal" data-step="4">
+            <span class="step__num">04</span>
+            <div>
+              <h3 class="h3">스티커·스트랩으로 마무리</h3>
+              <p>스티커를 붙이고 스트랩을 걸면 완성. 이 조합만으로도 180가지 이상의 디자인이 나와요.</p>
+            </div>
+          </li>
+          <li class="step reveal" data-step="5">
+            <span class="step__num">05</span>
+            <div>
+              <h3 class="h3">3D로 먼저 미리보기</h3>
+              <p>2025년 7월부터 공식몰 3D 컨피규레이터에서 바디·뚜껑 5종과 스트랩·키링·스티커·빨대를 조합해 360° 회전, 실제 크기, 실시간 가격을 확인하고 바로 주문할 수 있어요.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 6. Lineup -->
+    <section class="section band band--milk" id="lineup" aria-labelledby="lineup-title">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="label">Lineup</p>
+          <h2 id="lineup-title" class="h2">What's Your <em>Tumbler?</em></h2>
+          <p class="section-head__desc">컬러 점을 눌러 색을 바꿔 보세요. 일러스트는 이해를 돕기 위한 그림이며 실제 제품과 다를 수 있어요.</p>
+        </header>
+        <div class="tabs" role="group" aria-label="라인업 필터">
+          <button type="button" class="tab is-active" data-filter="all" aria-pressed="true">전체</button>
+          <button type="button" class="tab" data-filter="loop" aria-pressed="false">루프</button>
+          <button type="button" class="tab" data-filter="twoway" aria-pressed="false">투웨이</button>
+          <button type="button" class="tab" data-filter="tritan" aria-pressed="false">트라이탄</button>
+          <button type="button" class="tab" data-filter="modular" aria-pressed="false">모듈형</button>
+          <button type="button" class="tab" data-filter="acc" aria-pressed="false">액세서리</button>
+        </div>
+        <ul class="products">
+          <li class="product reveal" data-cat="loop">
+            <div class="product__media tint-pink">
+              <span class="product__badge">BEST</span>
+              <svg class="product__svg" viewBox="0 0 200 320" aria-hidden="true"><use href="#tumbler"/></svg>
+            </div>
+            <div class="product__body">
+              <h3 class="h3">루프 텀블러</h3>
+              <p class="product__en">Loop Tumbler · Standard</p>
+              <ul class="caps"><li>400ml</li><li>600ml</li></ul>
+              <p class="product__desc">루프 손잡이의 시그니처 모델. 600ml는 스테인리스 304 바디에 파우더 코팅, 바디·뚜껑·슬리브 구성.</p>
+              <p class="product__price">600ml 35,000원 <span>(오덴세 스토어 기준)</span></p>
+              <div class="swatches" role="group" aria-label="루프 텀블러 컬러">
+                <button type="button" class="swatch is-active" data-tint="pink" aria-pressed="true"><span class="visually-hidden">핑크</span></button>
+                <button type="button" class="swatch" data-tint="mint" aria-pressed="false"><span class="visually-hidden">민트</span></button>
+                <button type="button" class="swatch" data-tint="gray" aria-pressed="false"><span class="visually-hidden">라이트 그레이</span></button>
+                <button type="button" class="swatch" data-tint="blue" aria-pressed="false"><span class="visually-hidden">라이트 블루</span></button>
+                <button type="button" class="swatch" data-tint="green" aria-pressed="false"><span class="visually-hidden">애플 그린</span></button>
+                <button type="button" class="swatch" data-tint="butter" aria-pressed="false"><span class="visually-hidden">버터 크림</span></button>
+              </div>
+              <p class="swatch-name" aria-live="polite">핑크</p>
+            </div>
+          </li>
+          <li class="product reveal" data-cat="loop">
+            <div class="product__media tint-lavender">
+              <span class="product__badge product__badge--blue">HOT</span>
+              <svg class="product__svg" viewBox="0 0 200 320" aria-hidden="true"><use href="#tumbler"/></svg>
+            </div>
+            <div class="product__body">
+              <h3 class="h3">루프 텀블러 멀티</h3>
+              <p class="product__en">Loop Tumbler Multi</p>
+              <ul class="caps"><li>400ml</li><li>600ml</li><li>1000ml</li></ul>
+              <p class="product__desc">한국에서 가장 인기 있는 타입. 뚜껑으로 바로 마시거나 빨대를 꽂아 마실 수 있어요.</p>
+              <p class="product__price">400ml 32,000원 <span>(올리브영 컬래버 판매가 기준)</span></p>
+              <div class="swatches" role="group" aria-label="루프 텀블러 멀티 컬러">
+                <button type="button" class="swatch is-active" data-tint="lavender" aria-pressed="true"><span class="visually-hidden">라벤더</span></button>
+                <button type="button" class="swatch" data-tint="carrot" aria-pressed="false"><span class="visually-hidden">오렌지 캐럿</span></button>
+                <button type="button" class="swatch" data-tint="vanilla" aria-pressed="false"><span class="visually-hidden">바닐라</span></button>
+                <button type="button" class="swatch" data-tint="mint" aria-pressed="false"><span class="visually-hidden">민트</span></button>
+              </div>
+              <p class="swatch-name" aria-live="polite">라벤더</p>
+            </div>
+          </li>
+          <li class="product reveal" data-cat="twoway">
+            <div class="product__media tint-blue">
+              <svg class="product__svg" viewBox="0 0 200 320" aria-hidden="true"><use href="#tumbler"/></svg>
+            </div>
+            <div class="product__body">
+              <h3 class="h3">투웨이 루프 텀블러</h3>
+              <p class="product__en">Two-way Loop Tumbler</p>
+              <ul class="caps"><li>450ml</li><li>720ml</li></ul>
+              <p class="product__desc">세라믹 코팅 스테인리스 304 바디, PP·고무 뚜껑. 2023년 12월 출시.</p>
+              <p class="product__price">33,000원 / 36,000원</p>
+              <div class="swatches" role="group" aria-label="투웨이 루프 텀블러 컬러">
+                <button type="button" class="swatch is-active" data-tint="blue" aria-pressed="true"><span class="visually-hidden">라이트 블루</span></button>
+                <button type="button" class="swatch" data-tint="pink" aria-pressed="false"><span class="visually-hidden">핑크</span></button>
+                <button type="button" class="swatch" data-tint="gray" aria-pressed="false"><span class="visually-hidden">라이트 그레이</span></button>
+              </div>
+              <p class="swatch-name" aria-live="polite">라이트 블루</p>
+            </div>
+          </li>
+          <li class="product reveal" data-cat="tritan">
+            <div class="product__media tint-green">
+              <svg class="product__svg" viewBox="0 0 200 320" aria-hidden="true"><use href="#tumbler"/></svg>
+            </div>
+            <div class="product__body">
+              <h3 class="h3">루프 텀블러 (트라이탄)</h3>
+              <p class="product__en">Loop Tumbler · Tritan</p>
+              <ul class="caps"><li>532ml</li><li>4 colors</li></ul>
+              <p class="product__desc">가벼운 트라이탄 소재로 만든 루프 텀블러. 4가지 컬러로 나와요.</p>
+              <p class="product__price">가격은 판매처에서 확인</p>
+              <div class="swatches" role="group" aria-label="트라이탄 텀블러 컬러">
+                <button type="button" class="swatch is-active" data-tint="green" aria-pressed="true"><span class="visually-hidden">애플 그린</span></button>
+                <button type="button" class="swatch" data-tint="butter" aria-pressed="false"><span class="visually-hidden">버터 크림</span></button>
+                <button type="button" class="swatch" data-tint="blue" aria-pressed="false"><span class="visually-hidden">라이트 블루</span></button>
+                <button type="button" class="swatch" data-tint="pink" aria-pressed="false"><span class="visually-hidden">핑크</span></button>
+              </div>
+              <p class="swatch-name" aria-live="polite">애플 그린</p>
+            </div>
+          </li>
+          <li class="product reveal" data-cat="modular">
+            <div class="product__media tint-butter">
+              <span class="product__badge">NEW</span>
+              <svg class="product__svg" viewBox="0 0 200 320" aria-hidden="true"><use href="#tumbler"/></svg>
+            </div>
+            <div class="product__body">
+              <h3 class="h3">모듈형 텀블러</h3>
+              <p class="product__en">Modular Tumbler · 2026.06</p>
+              <ul class="caps"><li>28 parts</li><li>손잡이·뚜껑·바디·슬리브</li></ul>
+              <p class="product__desc">스티커와 키링을 넘어, 28개 파츠를 골라 내 맘대로 조립하는 텀블러. 코엑스 팝업에서 처음 선보였어요.</p>
+              <p class="product__price">가격은 판매처에서 확인</p>
+              <div class="swatches" role="group" aria-label="모듈형 텀블러 컬러">
+                <button type="button" class="swatch is-active" data-tint="butter" aria-pressed="true"><span class="visually-hidden">버터 크림</span></button>
+                <button type="button" class="swatch" data-tint="carrot" aria-pressed="false"><span class="visually-hidden">오렌지 캐럿</span></button>
+                <button type="button" class="swatch" data-tint="lavender" aria-pressed="false"><span class="visually-hidden">라벤더</span></button>
+                <button type="button" class="swatch" data-tint="mint" aria-pressed="false"><span class="visually-hidden">민트</span></button>
+              </div>
+              <p class="swatch-name" aria-live="polite">버터 크림</p>
+            </div>
+          </li>
+          <li class="product reveal" data-cat="acc">
+            <div class="product__media tint-pink">
+              <span class="product__badge product__badge--blue">TUMGGU</span>
+              <svg class="product__svg product__svg--acc" viewBox="0 0 200 200" aria-hidden="true">
+                <circle cx="70" cy="40" r="12" fill="none" stroke="#5B5670" stroke-width="5"/>
+                <line x1="70" y1="52" x2="70" y2="76" stroke="#5B5670" stroke-width="4"/>
+                <ellipse cx="58" cy="82" rx="8" ry="20" fill="#FFFBF5" stroke="#1E1B2E" stroke-width="4"/>
+                <ellipse cx="82" cy="82" rx="8" ry="20" fill="#FFFBF5" stroke="#1E1B2E" stroke-width="4"/>
+                <circle cx="70" cy="116" r="28" fill="#FFFBF5" stroke="#1E1B2E" stroke-width="4"/>
+                <circle cx="60" cy="112" r="3.5" fill="#1E1B2E"/><circle cx="80" cy="112" r="3.5" fill="#1E1B2E"/>
+                <path d="M150 150c-22-14-34-24-34-38 0-10 8-17 17-17 7 0 13 4 17 10 4-6 10-10 17-10 9 0 17 7 17 17 0 14-12 24-34 38Z" fill="#FF4F8B" stroke="#1E1B2E" stroke-width="4"/>
+                <use href="#sparkle" x="120" y="30" width="44" height="44" fill="#2F5BEA"/>
+                <rect x="30" y="160" width="76" height="22" rx="11" fill="#FFE14D"/>
+              </svg>
+            </div>
+            <div class="product__body">
+              <h3 class="h3">텀꾸 액세서리</h3>
+              <p class="product__en">TUMGGU Accessories</p>
+              <ul class="caps"><li>키링</li><li>참</li><li>스티커</li><li>스트랩</li><li>빨대</li><li>슬리브</li></ul>
+              <p class="product__desc">버니 키링(브라운·블랙), 아크릴 리본 참, 스티커, 스트랩, 빨대, 컬러 슬리브. 버니와 하트는 레고트의 단골 모티프예요.</p>
+              <p class="product__price">아크릴 리본 참 ¥1,000 <span>(일본 판매가 기준)</span></p>
+            </div>
+          </li>
+        </ul>
+        <p class="note">가격은 조사 시점(2026년 11월)에 확인한 판매처 기준이며 자주 바뀝니다. 일부는 품절·이전 판매 정보예요.</p>
+      </div>
+    </section>
+
+    <!-- 7. Collaborations -->
+    <section class="section band band--pink" id="collab" aria-labelledby="collab-title">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="label">Collaborations</p>
+          <h2 id="collab-title" class="h2">좋아하는 것과 <em>콜라보</em></h2>
+          <p class="section-head__desc">파트너 로고와 캐릭터 이미지는 사용하지 않고 이름만 소개합니다.</p>
+        </header>
+        <div class="collab">
+          <article class="collab__feature reveal">
+            <svg class="burst" viewBox="0 0 100 100" aria-hidden="true"><use href="#burst"/><text x="50" y="55" text-anchor="middle">COLLAB</text></svg>
+            <p class="collab__date">2026.07</p>
+            <h3 class="collab__name">LEGODT × 포켓몬코리아</h3>
+            <p>루프 텀블러 모듈 414ml, 런치박스 스퀘어, 24인치 캐리어, 페이스 파우치 키링. 29CM '29 Limited Order'(7/17–7/30)로 판매하고, 이구홈 성수에서 QR 스탬프 랠리 팝업을 열었어요.</p>
+            <p class="collab__price">텀블러 모듈 414ml 47,000원 → 39,900원</p>
+          </article>
+          <ul class="collab__grid">
+            <li class="collab__card tint-card-butter reveal">
+              <p class="collab__date">Olive Young</p>
+              <h3 class="h3">망그러진 곰 × 올리브영</h3>
+              <p>루프 텀블러 멀티 400ml '베이비 엔젤', '프루티 스위츠' 디자인. 32,000원(현재 판매 종료).</p>
+            </li>
+            <li class="collab__card tint-card-mint reveal">
+              <p class="collab__date">2026.10</p>
+              <h3 class="h3">PLUPPY (디저트 브랜드)</h3>
+              <p>용산 아이파크몰 도파민 스테이션 공동 팝업. 컬러 파츠로 텀블러를 조립하고 가챠를 즐겼어요.</p>
+            </li>
+            <li class="collab__card tint-card-lavender reveal">
+              <p class="collab__date">Japan 2025</p>
+              <h3 class="h3">POCA-i (K-POP 포토카드)</h3>
+              <p>시부야 모디 팝업에서 포토카드 가챠를 함께 진행. 최애 아이돌 컬러로 텀꾸하는 재미를 더했어요.</p>
+            </li>
+            <li class="collab__card tint-card-blue reveal">
+              <p class="collab__date">2025.07</p>
+              <h3 class="h3">3D 컨피규레이터 × 플래닝고</h3>
+              <p>3D 스타트업 플래닝고와 함께 만든 공식몰 텀블러 조합 도구. 올리브영N 성수 팝업에선 3D 키오스크로도 선보였어요.</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. Pop-up timeline -->
+    <section class="section band band--mint" id="popup" aria-labelledby="popup-title">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="label">Pop-up History</p>
+          <h2 id="popup-title" class="h2">Stay in the <em>Loop</em></h2>
+          <p class="section-head__desc">2024년부터 2026년 10월까지 한국과 일본에서 열린 팝업 11곳. 카드를 좌우로 넘겨 보세요.</p>
+        </header>
+        <div class="tabs tabs--small" role="group" aria-label="팝업 지역 필터">
+          <button type="button" class="tab is-active" data-region="all" aria-pressed="true">전체</button>
+          <button type="button" class="tab" data-region="kr" aria-pressed="false">한국 KR</button>
+          <button type="button" class="tab" data-region="jp" aria-pressed="false">일본 JP</button>
+        </div>
+      </div>
+      <div class="timeline" tabindex="0" aria-label="팝업 타임라인 (가로 스크롤)">
+        <ol class="timeline__list">
+          <li class="timeline__deco" aria-hidden="true">
+            <svg class="timeline__loop" viewBox="0 0 5660 120">
+              <path d="M0 53H2600c40 0 60-46 30-46s-40 46 0 46H3880c40 0 60-46 30-46s-40 46 0 46H5660" fill="none" stroke="#1E1B2E" stroke-width="4" stroke-linecap="round"/>
+            </svg>
+          </li>
+          <li class="ticket" data-region="kr"><span class="ticket__year">2024</span><p class="ticket__date">2024 여름</p><h3 class="ticket__place">롯데월드몰 잠실</h3><p class="ticket__city"><span class="flag flag--kr">KR</span> 서울</p><p>텀꾸 이벤트</p></li>
+          <li class="ticket" data-region="kr"><p class="ticket__date">2024.07.25 – 08.06</p><h3 class="ticket__place">무신사 스퀘어 성수3</h3><p class="ticket__city"><span class="flag flag--kr">KR</span> 서울</p><p>TUMGGU 팝업. 텀블러 구매 시 액세서리 50% 할인, 텀꾸 키트 출시</p></li>
+          <li class="ticket" data-region="kr"><span class="ticket__year">2025</span><p class="ticket__date">2025.07.03 – 07.13</p><h3 class="ticket__place">올리브영N 성수</h3><p class="ticket__city"><span class="flag flag--kr">KR</span> 서울</p><p>'PLAY MY WAY' 아케이드 콘셉트, 3D 키오스크. 하루 약 1,500명 방문</p></li>
+          <li class="ticket" data-region="jp"><p class="ticket__date">2025.07.23 – 07.28</p><h3 class="ticket__place">한큐 우메다 본점 9F</h3><p class="ticket__city"><span class="flag flag--jp">JP</span> 오사카</p><p>일본 첫 팝업. K-POP 트레이딩 카드, 키 참 워크숍</p></li>
+          <li class="ticket" data-region="jp"><p class="ticket__date">2025.09.19 – 09.23</p><h3 class="ticket__place">시부야 모디 1F</h3><p class="ticket__city"><span class="flag flag--jp">JP</span> 도쿄</p><p>'놀듯이 고르는 나만의 컬러 스토어'. POCA-i 포토카드 가챠</p></li>
+          <li class="ticket" data-region="jp"><p class="ticket__date">2025.11.12 – 11.19</p><h3 class="ticket__place">그랜트리 무사시코스기 2F</h3><p class="ticket__city"><span class="flag flag--jp">JP</span> 가와사키</p><p>일본 세 번째 팝업. 무료 스티커, 키 참 체험</p></li>
+          <li class="ticket" data-region="jp"><span class="ticket__year">2026</span><p class="ticket__date">2026.05.11 – 06.14</p><h3 class="ticket__place">PLAZA 다마가와 다카시마야 S.C.</h3><p class="ticket__city"><span class="flag flag--jp">JP</span> 도쿄</p><p>구매 고객 무료 스티커 증정</p></li>
+          <li class="ticket" data-region="kr"><p class="ticket__date">2026.06.08 – 06.24</p><h3 class="ticket__place">코엑스 파르나스몰 B1</h3><p class="ticket__city"><span class="flag flag--kr">KR</span> 서울</p><p>모듈형 텀블러 런칭. 각인 서비스, SNS 스크래치 쿠폰</p></li>
+          <li class="ticket" data-region="kr"><p class="ticket__date">2026.07.17 – 08.06</p><h3 class="ticket__place">이구홈 성수</h3><p class="ticket__city"><span class="flag flag--kr">KR</span> 서울</p><p>LEGODT × 포켓몬 팝업. QR 스탬프 랠리</p></li>
+          <li class="ticket" data-region="kr"><p class="ticket__date">2026.09.24 – 10.05</p><h3 class="ticket__place">파주 프리미엄 아울렛</h3><p class="ticket__city"><span class="flag flag--kr">KR</span> 파주</p><p>텀블러 데코 팝업</p></li>
+          <li class="ticket" data-region="kr"><p class="ticket__date">2026.10.02 – 10.15</p><h3 class="ticket__place">아이파크몰 도파민 스테이션 3F</h3><p class="ticket__city"><span class="flag flag--kr">KR</span> 서울 용산</p><p>LEGODT × PLUPPY. 컬러 파츠 조립, 가챠</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 9. Where to buy -->
+    <section class="section band band--milk" id="buy" aria-labelledby="buy-title">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="label">Where to Buy</p>
+          <h2 id="buy-title" class="h2">어디서 <em>살 수</em> 있나요?</h2>
+        </header>
+        <div class="buy">
+          <article class="buy__panel buy__panel--kr reveal">
+            <figure class="buy__photo">
+              <img src="images/buy-korea-brick-street.jpg" width="900" height="1350" loading="lazy" alt="한국의 붉은 벽돌 건물이 늘어선 거리">
+            </figure>
+            <div class="buy__body">
+              <p class="buy__flag"><span class="flag flag--kr">KR</span> Korea</p>
+              <h3 class="buy__title">한국</h3>
+              <p>공식몰(멤버십·3D 컨피규레이터), 오덴세, 온라인 편집숍과 올리브영 매장에서 만날 수 있어요.</p>
+              <ul class="channels">
+                <li><a href="https://legodt.kr/" target="_blank" rel="noopener">레고트 공식 스토어</a></li>
+                <li><a href="https://odenseofficial.com/" target="_blank" rel="noopener">오덴세</a></li>
+                <li><a href="https://www.29cm.co.kr/store/brand/25601" target="_blank" rel="noopener">29CM</a></li>
+                <li><a href="https://www.musinsa.com/" target="_blank" rel="noopener">무신사</a></li>
+                <li><a href="https://www.oliveyoung.co.kr/" target="_blank" rel="noopener">올리브영</a></li>
+                <li><a href="https://www.kurly.com/" target="_blank" rel="noopener">컬리</a></li>
+              </ul>
+            </div>
+          </article>
+          <article class="buy__panel buy__panel--jp reveal">
+            <figure class="buy__photo">
+              <img src="images/buy-japan-shibuya.jpg" width="1200" height="799" loading="lazy" alt="낮 시간 도쿄 시부야 교차로를 건너는 사람들">
+            </figure>
+            <div class="buy__body">
+              <p class="buy__flag"><span class="flag flag--jp">JP</span> Japan</p>
+              <h3 class="buy__title">일본</h3>
+              <p>일본에는 상설 매장이 없어요. ㈜마나마나가 운영하는 공식 온라인 스토어와 기간 한정 팝업에서만 판매해요. 일본 내 재고 발송, ¥8,000 이상 무료 배송.</p>
+              <ul class="channels">
+                <li><a href="https://legodt.jp/" target="_blank" rel="noopener">legodt.jp</a></li>
+                <li><a href="#popup">팝업 일정 보기</a></li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10. FAQ -->
+    <section class="section band band--lavender" id="faq" aria-labelledby="faq-title">
+      <div class="container container--narrow">
+        <header class="section-head reveal">
+          <p class="label">FAQ</p>
+          <h2 id="faq-title" class="h2">자주 묻는 질문</h2>
+        </header>
+        <div class="faq">
+          <details class="faq__item">
+            <summary>텀꾸(TUMGGU)가 뭐예요?</summary>
+            <p>'텀블러'와 '꾸미다'를 합친 레고트의 시그니처 단어예요. 루프 텀블러에 키링, 참, 스티커, 스트랩, 컬러 슬리브를 더해 나만의 텀블러를 만드는 즐거움과 개성을 뜻해요.</p>
+          </details>
+          <details class="faq__item">
+            <summary>보온·보냉은 얼마나 되나요?</summary>
+            <p>보온병에 견줄 만한 단열로 따뜻한 음료와 차가운 음료를 6시간 동안 유지한다고 소개되어 있어요(일본 팝업 보도자료 기준).</p>
+          </details>
+          <details class="faq__item">
+            <summary>어떤 소재로 만들어졌나요?</summary>
+            <p>루프 텀블러 600ml는 스테인리스 304 바디에 바깥은 파우더 코팅이에요. 투웨이 루프 텀블러는 세라믹 코팅 스테인리스 304 바디와 PP·고무 뚜껑이고, 트라이탄 소재 모델(532ml)도 있어요. 텀블러 제조국은 중국으로 표시되어 있어요.</p>
+          </details>
+          <details class="faq__item">
+            <summary>일본에 오프라인 매장이 있나요?</summary>
+            <p>아니요. 일본에서는 공식 온라인 스토어 legodt.jp와 기간 한정 팝업에서만 구매할 수 있어요.</p>
+          </details>
+          <details class="faq__item">
+            <summary>식기세척기에 넣어도 되나요?</summary>
+            <p>공식 자료에서 확인하지 못했어요. 세척 방법은 제품 상세 페이지나 판매처 안내를 꼭 확인해 주세요.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 11. SNS footer -->
+  <footer class="footer">
+    <div class="container">
+      <p class="footer__slogan" aria-hidden="true">Make it pop.<br>Make it you.</p>
+      <div class="footer__grid">
+        <div>
+          <p class="footer__logo">LEGODT</p>
+          <p class="footer__desc">오덴세(브랜드웍스코리아)의 컨템포러리 라이프스타일 브랜드</p>
+        </div>
+        <ul class="sns" aria-label="레고트 SNS">
+          <li><a class="sns__btn sns__btn--pink" href="https://www.instagram.com/legodt.official/" target="_blank" rel="noopener">Instagram KR <span>@legodt.official</span></a></li>
+          <li><a class="sns__btn sns__btn--blue" href="https://www.instagram.com/legodt.japan/" target="_blank" rel="noopener">Instagram JP <span>@legodt.japan</span></a></li>
+          <li><p class="sns__btn sns__btn--butter">KakaoTalk <span>플러스 채널에서 이벤트 소식</span></p></li>
+        </ul>
+      </div>
+      <div class="footer__fine">
+        <p>이 페이지는 공개된 보도자료·판매처 정보(2026년 11월 확인)를 바탕으로 만든 비공식 브랜드 소개 페이지입니다. 레고트 공식 로고와 제품 사진은 사용하지 않았고, 텀블러 일러스트는 직접 그린 그림입니다. 가격과 일정은 바뀔 수 있어요.</p>
+        <p class="credits">Photos: <a href="https://unsplash.com/photos/xo7_WArjdYk" target="_blank" rel="noopener">Raymond Petrik</a>, <a href="https://unsplash.com/photos/zotsvPhK_EI" target="_blank" rel="noopener">Shuang Yin</a>, <a href="https://unsplash.com/photos/M3ohSl92vZQ" target="_blank" rel="noopener">rawkkim</a>, <a href="https://unsplash.com/photos/12FSd06Rsz4" target="_blank" rel="noopener">Yuya Uzu</a> on Unsplash (<a href="https://unsplash.com/license" target="_blank" rel="noopener">Unsplash License</a>) · Font: Outfit (Google Fonts, OFL), Pretendard (OFL)</p>
+        <a class="to-top" href="#top">맨 위로 ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>

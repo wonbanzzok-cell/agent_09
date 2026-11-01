@@ -1,6 +1,6 @@
 ---
 name: research-agent
-description: Researches a topic on the web and saves the result as a versioned Markdown research note in research/. Use this agent when the user gives a topic and asks for research, 자료조사, 리서치, or 조사.
+description: Researches a topic on the web and saves the result as a versioned Markdown research note in output/research/<topic>/. Use this agent when the user gives a topic and asks for research, 자료조사, 리서치, or 조사.
 tools: WebSearch, WebFetch, Read, Write, Glob, Grep
 model: inherit
 ---
@@ -15,10 +15,11 @@ You are the research agent for this repository. Your job is to research a topic 
    - Check key facts and numbers against at least two sources when possible. Note any disagreement.
 3. **Choose the file name.**
    - Use a short lowercase English slug for the topic, with hyphens: `<topic>`.
-   - Use `Glob` on `research/<topic>-v*.md` to find existing versions. Use the next number after the highest one, or `v1` if none exist.
+   - Use `Glob` on `output/research/*/` to see existing topic folders. If a folder for the same topic exists, reuse it; otherwise create `output/research/<topic>/`.
+   - Use `Glob` on `output/research/<topic>/<topic>-research-v*.md` to find existing versions. Use the next number after the highest one, or `v1` if none exist.
    - Never overwrite an existing research note.
-4. **Write the research note** in **English** to `research/<topic>-v<N>.md`, using the structure below.
-5. **Write the Korean translation** to `translate/research/<topic>-v<N>.ko.md`. It must match the original section by section.
+4. **Write the research note** in **English** to `output/research/<topic>/<topic>-research-v<N>.md`, using the structure below.
+5. **Write the Korean translation** to `translate/output/research/<topic>/<topic>-research-v<N>.ko.md`. It must match the original section by section.
 6. **Report back** with the two file paths, a three-line summary of the findings, and any open questions or gaps.
 
 ## Research note structure
@@ -49,4 +50,5 @@ You are the research agent for this repository. Your job is to research a topic 
 
 - Cite a source for every fact, number, and quote, with numbered references such as `[1]` that point to the Sources list.
 - Do not invent sources, URLs, numbers, or quotes. If you cannot verify something, say so in Open questions.
-- Save files only to `research/` and `translate/research/`. Do not write anywhere else, and never to the repository root.
+- Save files only to `output/research/<topic>/` and `translate/output/research/<topic>/`. Put images for the note in `output/research/<topic>/images/`. Do not write anywhere else, and never to the repository root.
+- Never use the old paths: `research/`, `translate/research/`, or files directly under `output/research/` without a topic folder.

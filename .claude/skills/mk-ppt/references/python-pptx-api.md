@@ -106,7 +106,7 @@ if __name__ == "__main__":
     build(sys.argv[1])
 ```
 
-Run it from the repository root: `python scripts/build-presentation-v<N>.py "presentation/<주제>_발표자료_v<N>.pptx"`. Create the output folder first if it does not exist.
+Run it from the repository root: `python scripts/build-presentation-v<N>.py "output/presentation/<topic>/<주제>_발표자료_v<N>.pptx"`. Create the output folder first if it does not exist.
 
 ## 2. Presentation and slides
 

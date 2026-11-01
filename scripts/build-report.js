@@ -56,7 +56,7 @@ const children = [
   new Paragraph({ spacing: { before: 3000, after: 300 }, alignment: AlignmentType.CENTER, children: [new TextRun({ text: 'AI 발전 현황과 전망', font: FONT, size: 56, bold: true, color: '1F3864' })] }),
   new Paragraph({ alignment: AlignmentType.CENTER, spacing: { after: 1200 }, children: [new TextRun({ text: '2026년 10월 기준 자료조사 보고서', font: FONT, size: 28, color: '595959' })] }),
   new Paragraph({ alignment: AlignmentType.CENTER, children: [new TextRun({ text: '작성일: 2026년 10월 4일', font: FONT, size: 22 })] }),
-  new Paragraph({ alignment: AlignmentType.CENTER, children: [new TextRun({ text: '근거 자료: research/ai-development-research-v2.md', font: FONT, size: 20, color: '595959' })] }),
+  new Paragraph({ alignment: AlignmentType.CENTER, children: [new TextRun({ text: '근거 자료: output/research/ai-development/ai-development-research-v2.md', font: FONT, size: 20, color: '595959' })] }),
   new Paragraph({ children: [new PageBreak()] }),
 
   // TOC

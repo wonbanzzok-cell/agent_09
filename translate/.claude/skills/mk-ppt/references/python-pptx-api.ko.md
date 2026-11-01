@@ -106,7 +106,7 @@ if __name__ == "__main__":
     build(sys.argv[1])
 ```
 
-저장소 루트에서 실행한다: `python scripts/build-presentation-v<N>.py "presentation/<주제>_발표자료_v<N>.pptx"`. 출력 폴더가 없으면 먼저 만든다.
+저장소 루트에서 실행한다: `python scripts/build-presentation-v<N>.py "output/presentation/<topic>/<주제>_발표자료_v<N>.pptx"`. 출력 폴더가 없으면 먼저 만든다.
 
 ## 2. 프레젠테이션과 슬라이드
 

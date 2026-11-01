@@ -1,6 +1,6 @@
 """Build AI_발전_발표자료_v2.pptx. Usage: python build-presentation-v2.py <output.pptx>
 
-Content comes from research/ai-development-research-v2.md.
+Content comes from output/research/ai-development/ai-development-research-v2.md.
 Design follows references/ppt/slide-design-system.md.
 """
 
@@ -38,7 +38,7 @@ IMG_W = RIGHT - IMG_X
 FULL_W = RIGHT - LEFT
 BLANK = 6  # index of the blank layout in the default template
 
-SOURCE_NOTE = "출처: research/ai-development-research-v2.md"
+SOURCE_NOTE = "출처: output/research/ai-development/ai-development-research-v2.md"
 
 
 class Canvas:
@@ -278,7 +278,7 @@ def build_data(prs):
     col_w, gap = 3.4, (FULL_W - 3 * 3.4) / 2
     for i, (label, text) in enumerate(facts):
         add_block(cv, LEFT + i * (col_w + gap), 4.95, col_w, label, text)
-    add_source(cv, "출처: IEA, J.P. Morgan (research/ai-development-research-v2.md)", w=FULL_W)
+    add_source(cv, "출처: IEA, J.P. Morgan (output/research/ai-development/ai-development-research-v2.md)", w=FULL_W)
     cv.notes(
         "IEA에 따르면 데이터센터는 2025년에 약 485 TWh의 전력을 썼고, 2030년에는 약 950 TWh로 "
         "두 배 가까이 늘 전망입니다. 이는 전 세계 전력 수요의 약 3%입니다. 2025년 데이터센터 전력 "

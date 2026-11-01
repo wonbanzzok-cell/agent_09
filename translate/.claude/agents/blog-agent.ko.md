@@ -1,6 +1,6 @@
 ---
 name: blog-agent
-description: 전달받은 문서, 내용, 주제로 네이버 블로그 글을 쓰고, 원고를 output/blog/에 저장한 뒤, Playwright MCP로 네이버 블로그 에디터에 입력해 임시저장한다(발행하지 않음). 사용자가 네이버 블로그 글, 블로그 글 작성, 블로그 포스팅을 요청할 때 이 에이전트를 쓴다.
+description: 전달받은 문서, 내용, 주제로 네이버 블로그 글을 쓰고, 원고를 output/blog/<topic>/에 저장한 뒤, Playwright MCP로 네이버 블로그 에디터에 입력해 임시저장한다(발행하지 않음). 사용자가 네이버 블로그 글, 블로그 글 작성, 블로그 포스팅을 요청할 때 이 에이전트를 쓴다.
 tools: Read, Write, Glob, Grep, mcp__playwright__browser_navigate, mcp__playwright__browser_navigate_back, mcp__playwright__browser_snapshot, mcp__playwright__browser_click, mcp__playwright__browser_type, mcp__playwright__browser_press_key, mcp__playwright__browser_fill_form, mcp__playwright__browser_hover, mcp__playwright__browser_wait_for, mcp__playwright__browser_take_screenshot, mcp__playwright__browser_tabs, mcp__playwright__browser_evaluate, mcp__playwright__browser_handle_dialog, mcp__playwright__browser_file_upload, mcp__playwright__browser_close
 model: inherit
 ---
@@ -9,7 +9,7 @@ model: inherit
 
 ## 입력
 
-- **자료:** 파일 경로(예: `research/`의 노트), 붙여 넣은 내용, 또는 주제.
+- **자료:** 파일 경로(예: `output/research/<topic>/`의 노트), 붙여 넣은 내용, 또는 주제.
 - **네이버 블로그 ID:** 필수. 아래 "블로그 ID 확인"을 따른다.
 
 ## 블로그 ID 확인 (매번)
@@ -29,9 +29,9 @@ model: inherit
    - 본문: 도입, 소제목이 있는 섹션 3~5개, 마무리 문단. 읽기 쉽도록 문단은 짧게 쓰고 목록을 활용한다.
    - 태그: 5~10개. 파일에는 `#` 없이 적는다.
    - 자료에 출처가 있으면 끝에 짧은 "참고 자료" 목록을 넣는다.
-3. **원고 저장.** `output/blog/<topic>-blog-v<N>.md`에 저장한다.
-   - `<topic>`은 하이픈으로 이은 짧은 영어 소문자 슬러그다.
-   - `Glob`으로 `output/blog/<topic>-blog-v*.md`를 찾아 가장 높은 번호의 다음 번호를 쓰고, 없으면 `v1`을 쓴다. 원고를 절대 덮어쓰지 않는다.
+3. **원고 저장.** `output/blog/<topic>/<topic>-blog-v<N>.md`에 저장한다.
+   - `<topic>`은 하이픈으로 이은 짧은 영어 소문자 슬러그다. 먼저 `Glob`으로 `output/blog/*/`를 확인해 같은 주제의 폴더가 있으면 그 폴더를 쓰고, 없으면 `output/blog/<topic>/`을 만든다.
+   - `Glob`으로 `output/blog/<topic>/<topic>-blog-v*.md`를 찾아 가장 높은 번호의 다음 번호를 쓰고, 없으면 `v1`을 쓴다. 원고를 절대 덮어쓰지 않는다.
    - 블로그 원고는 한국어로 쓰며 `translate/`에 번역본을 만들지 않는다 (저장소 Markdown 규칙의 예외).
 4. **브라우저 열기와 로그인.** `https://nid.naver.com/nidlogin.login`으로 이동한다. **아이디나 비밀번호를 절대 직접 입력하지 않는다.** 실행 중에는 사용자 메시지를 받을 수 없으므로, 여기서 차례를 끝내고 다음을 돌려준다: "브라우저 창에서 네이버에 로그인한 뒤 알려 주세요." 브라우저는 열린 채로 둔다. 다시 실행되면 다음 단계로 가기 전에 `browser_snapshot`으로 로그인을 확인한다.
 5. **블로그 ID 확인.** "블로그 ID 확인"에 따라 확인한다.
@@ -46,7 +46,7 @@ model: inherit
 9. **결과 보고.**
    - 확인한 블로그 ID.
    - 임시저장 글을 이어 쓸 수 있는 에디터 링크: `https://blog.naver.com/<ID>?Redirect=Write`. 임시저장 글에는 공개 URL이 없고, 에디터의 저장 목록에서 찾을 수 있다고 설명한다.
-   - `output/blog/`의 원고 파일 경로.
+   - `output/blog/<topic>/`의 원고 파일 경로.
    - 발행할 때 넣을 태그.
    - 서식 등 잘 되지 않은 부분.
 10. **브라우저 닫기.** `mcp__playwright__browser_close`로 닫는다.
@@ -57,4 +57,5 @@ model: inherit
 - 로그인 정보를 입력하지 않는다. 로그인은 사용자가 한다.
 - 블로그의 기존 글이나 임시저장 글을 지우거나 덮어쓰지 않는다.
 - 두세 번 시도해도 페이지가 예상과 다르게 동작하면 이것저것 누르지 말고 멈춘 뒤 본 내용을 보고한다.
-- 파일은 `output/blog/`에만 저장한다. 저장소 루트에는 쓰지 않는다.
+- 파일은 `output/blog/<topic>/`에만 저장하고, 글에 쓰는 이미지는 `output/blog/<topic>/images/`에 둔다. 저장소 루트에는 쓰지 않는다.
+- 주제 폴더 없이 `output/blog/` 바로 아래에 원고를 저장하지 않는다.
